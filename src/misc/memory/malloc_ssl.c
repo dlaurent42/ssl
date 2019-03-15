@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 17:07:38 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/14 17:12:55 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/15 19:20:47 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,7 @@ t_ssl	*declare_empty_ssl_structure(void)
 	ssl = NULL;
 	if (!(ssl = (t_ssl *)ft_memalloc(sizeof(t_ssl))))
 		err_handler(ERRCODE_MALLOC_FAILED, NULL);
+	if (!(ssl->options = (t_options *)ft_memalloc(sizeof(t_options))))
+		err_handler(ERRCODE_MALLOC_FAILED, ssl);
 	return (ssl);
 }

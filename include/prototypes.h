@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:01:49 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/14 17:30:32 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/15 19:44:04 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,28 +31,30 @@
 */
 
 /*
-**	DISPATCHER:	dispatch the program following hash asked by user 
+**	DISPATCHER:	dispatch the program following hash asked by user
 */
-void		dispatcher(t_ssl **ssl);
+void			dispatcher(t_ssl **ssl);
 
 /*
 **	DISPLAY:	handles output of the program in case of successful execution
 */
+void			display(t_ssl *ssl);
 
 /*
 **	ERRORS:		handle every single fatal error in the program
 */
-void		err_handler(unsigned char errcode, t_ssl *ssl);
+void			err_handler(unsigned char errcode, t_ssl *ssl);
 
 /*
 **	MEMORY:		cares about memory allocation and free of program's structures
 */
-void		free_ssl(t_ssl *ssl);
-t_ssl		*declare_empty_ssl_structure(void);
+void			free_ssl(t_ssl *ssl);
+void			declare_new_argument(t_ssl **ssl, char *argument);
+t_ssl			*declare_empty_ssl_structure(void);
 
 /*
 **	PARSER:		parse arguments and fill t_ssl structure
 */
-void		parser(t_ssl **ssl)
+void			parse_arguments(t_ssl **ssl, char **av);
 
 #endif

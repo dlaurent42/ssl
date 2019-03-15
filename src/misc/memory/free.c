@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 16:30:12 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/14 17:03:05 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/15 19:18:39 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,7 @@ void			free_ssl(t_ssl *ssl)
 	if (!ssl)
 		return ;
 	ft_strdel(&ssl->hash);
+	if (ssl->options)
+		free(ssl->options);
 	free_arguments(ssl);
 }

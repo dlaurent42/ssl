@@ -10,11 +10,12 @@ SRC			=	ssl.c														\
 				md5/md5.c													\
 				sha256/sha256.c												\
 				misc/dispatcher/dispatcher.c								\
+				misc/display/display.c										\
 				misc/errors/errors.c										\
 				misc/memory/free.c											\
 				misc/memory/malloc_arg.c									\
 				misc/memory/malloc_ssl.c									\
-				misc/memory/free.c
+				misc/parser/parser.c
 
 SRCS		=	$(addprefix $(SRC_DIR), $(SRC_ALL))
 
@@ -45,6 +46,7 @@ $(OBJ_DIR):
 				@mkdir -p $(OBJ_DIR)/sha256
 				@mkdir -p $(OBJ_DIR)/misc
 				@mkdir -p $(OBJ_DIR)/misc/dispatcher
+				@mkdir -p $(OBJ_DIR)/misc/display
 				@mkdir -p $(OBJ_DIR)/misc/errors
 				@mkdir -p $(OBJ_DIR)/misc/memory
 				@mkdir -p $(OBJ_DIR)/misc/parser

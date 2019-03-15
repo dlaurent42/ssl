@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:05:00 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/14 16:55:06 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/15 19:19:18 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void		err_handler(unsigned char errcode, t_ssl *ssl)
 {
-	free_ssl(ssl);
 	if (errcode == ERRCODE_SSL_NO_ARG)
 		ft_putendl("usage: ft_ssl command [command opts] [command args]");
 	else if (errcode == ERRCODE_SSL_INVALID_CMD && ssl && ssl->hash)
@@ -30,5 +29,6 @@ void		err_handler(unsigned char errcode, t_ssl *ssl)
 	}
 	else
 		ft_putendl_fd("An error occured.", 2);
+	free_ssl(ssl);
 	exit(EXIT_FAILURE);
 }

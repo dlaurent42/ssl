@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:01:50 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/14 17:02:22 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/15 19:14:52 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct			s_options
 typedef struct			s_ssl
 {
 	char				*hash;
-	t_options			options;
+	t_options			*options;
 	t_argument			*argument;
 }						t_ssl;
 
