@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:01:49 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/15 19:44:04 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/16 18:24:10 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void			err_handler(unsigned char errcode, t_ssl *ssl);
 */
 void			free_ssl(t_ssl *ssl);
 void			declare_new_argument(t_ssl **ssl, char *argument);
+void			declare_new_stdin_argument(t_ssl **ssl, char *argument);
 t_ssl			*declare_empty_ssl_structure(void);
 
 /*
