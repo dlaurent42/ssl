@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 17:16:26 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/15 19:49:55 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/17 20:15:21 by azaliaus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	dispatcher(t_ssl **ssl)
 	if (ft_strcmps((*ssl)->hash, "md5") == 0)
 		ft_printf("Should run md5(ssl)\n");
 	else if (ft_strcmps((*ssl)->hash, "sha256") == 0)
-		ft_printf("Should run sha256(ssl)\n");
+		convert_sha256(*ssl);
 	else
 		err_handler(ERRCODE_SSL_INVALID_CMD, *ssl);
 }
