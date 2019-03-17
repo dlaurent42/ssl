@@ -1,3 +1,4 @@
 ft_ssl
 ft_ssl.dSYM
 obj/
+libft/libft.a
