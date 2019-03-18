@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:04:37 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/18 18:28:42 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/18 18:30:26 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,7 @@ static char	*prepare_message(char *message)
 	full = len + 1 + (512 - (len + 1) % 512);
 	if (!(new = (char *)ft_memalloc(len)))
 		return (NULL);
+	
 }
 
 static char	*footprint_block(uint32_t *r, uint32_t *k, uint32_t *block)
