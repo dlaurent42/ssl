@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 16:30:12 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/15 19:18:39 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/18 14:29:49 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void		free_arguments(t_ssl *ssl)
 	{
 		tmp = ssl->argument->next;
 		ft_strdel(&ssl->argument->hashed_argument);
+		ft_strdel(&ssl->argument->file_content);
 		ft_strdel(&ssl->argument->argument);
 		free(ssl->argument);
 		ssl->argument = tmp;
@@ -39,4 +40,5 @@ void			free_ssl(t_ssl *ssl)
 	if (ssl->options)
 		free(ssl->options);
 	free_arguments(ssl);
+	free(ssl);
 }

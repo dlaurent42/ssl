@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:01:50 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/15 22:10:33 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/18 14:25:44 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ typedef struct			s_argument
 {
 	char				*hashed_argument;
 	char				*argument;
+	char				*file_content;
 	unsigned char		is_file		:1;
 	unsigned char		is_stdin	:1;
 	unsigned char		is_string	:1;
