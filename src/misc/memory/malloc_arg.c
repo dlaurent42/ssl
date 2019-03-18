@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 17:08:07 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/18 15:38:21 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/18 17:26:21 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,19 @@
 
 static void	read_from_file(t_ssl *ssl, t_argument *arg)
 {
-	int		fd;
-	char	buffer[1024 + 1];
-	char	*file_content;
-	ssize_t	read_return;
+	int			fd;
+	char		buffer[1024 + 1];
+	char		*file_content;
+	ssize_t		read_return;
+	struct stat	buf;
 
 	file_content = NULL;
 	ft_bzero(buffer, 1025);
 	if ((fd = open(arg->argument, O_RDONLY)) == -1)
 		arg->error = errno;
-	while (fd > 0 && (read_return = read(fd, buffer, 1024)) > 0)
+	if (fstat(fd, &buf) == 0 && S_ISDIR(buf.st_mode))
+		arg->error = EISDIR;
+	while (arg->error == 0 && (read_return = read(fd, buffer, 1024)) > 0)
 	{
 		buffer[read_return] = '\0';
 		if (!(arg->file_content = ft_strjoinf(arg->file_content, buffer, 1)))
@@ -33,11 +36,7 @@ static void	read_from_file(t_ssl *ssl, t_argument *arg)
 		}
 		ft_bzero(buffer, 1025);
 	}
-	if (!arg->error && !arg->file_content)
-		if (!(arg->file_content = ft_strdups("")))
-			err_handler(ERRCODE_MALLOC_FAILED, ssl);
-	if (fd > 0)
-		close(fd);
+	close(fd);
 }
 
 void		declare_new_argument(t_ssl **ssl, char *argument, char type)
@@ -60,4 +59,7 @@ void		declare_new_argument(t_ssl **ssl, char *argument, char type)
 	new->is_stdin = (type == ARG_TYPE_STDIN);
 	new->is_string = (type == ARG_TYPE_STRING);
 	(new->is_file) ? read_from_file(*ssl, new) : NULL;
+	if (new->is_file && new->error > 0 && !new->file_content)
+		if (!(new->file_content = ft_strdups("")))
+			err_handler(ERRCODE_MALLOC_FAILED, *ssl);
 }
