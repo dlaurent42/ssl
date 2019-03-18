@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:00:38 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/15 22:16:31 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/18 15:00:07 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,5 @@
 # include "structures.h"
 # include "prototypes.h"
 # include <sys/select.h>
+# include <errno.h>
 #endif

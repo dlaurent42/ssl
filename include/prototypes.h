@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:01:49 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/18 14:18:51 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/18 15:21:32 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,13 @@
 **********************************    MD5    ***********************************
 **				It contains all prototypes relative to md5 hash
 */
+char			*convert_md5(char *input);
 
 /*
 ********************************    SHA256    **********************************
 **			  It contains all prototypes relative to sha256 hash
 */
-void			convert_sha256(t_ssl *ssl);
+char			*convert_sha256(char *input);
 void			sha256_crypt(t_argument *arg);
 
 /*
