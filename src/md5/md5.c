@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:04:37 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/18 18:30:26 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/19 18:34:57 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,39 +83,39 @@
 ** var entier empreinte := h0 concaténer h1 concaténer h2 concaténer h3 //(en little-endian)
 */
 
-static uint32_t	r(void)
-{
-	uint32_t	r[64] = {
-		7, 12, 17, 22,  7, 12, 17, 22,  7, 12, 17, 22,  7, 12, 17, 22,
-		5,  9, 14, 20,  5,  9, 14, 20,  5,  9, 14, 20,  5,  9, 14, 20,
-		4, 11, 16, 23,  4, 11, 16, 23,  4, 11, 16, 23,  4, 11, 16, 23,
-		6, 10, 15, 21,  6, 10, 15, 21,  6, 10, 15, 21,  6, 10, 15, 21
-	};
-	return (r);
-}
+// static uint32_t	r(void)
+// {
+// 	uint32_t	r[64] = {
+// 		7, 12, 17, 22,  7, 12, 17, 22,  7, 12, 17, 22,  7, 12, 17, 22,
+// 		5,  9, 14, 20,  5,  9, 14, 20,  5,  9, 14, 20,  5,  9, 14, 20,
+// 		4, 11, 16, 23,  4, 11, 16, 23,  4, 11, 16, 23,  4, 11, 16, 23,
+// 		6, 10, 15, 21,  6, 10, 15, 21,  6, 10, 15, 21,  6, 10, 15, 21
+// 	};
+// 	return (r);
+// }
 
-static uint32_t	k(void)
-{
-	uint32_t	k[64] = {
-		0xd76aa478, 0xe8c7b756, 0x242070db, 0xc1bdceee,
-		0xf57c0faf, 0x4787c62a, 0xa8304613, 0xfd469501,
-		0x698098d8, 0x8b44f7af, 0xffff5bb1, 0x895cd7be,
-		0x6b901122, 0xfd987193, 0xa679438e, 0x49b40821,
-		0xf61e2562, 0xc040b340, 0x265e5a51, 0xe9b6c7aa,
-		0xd62f105d, 0x02441453, 0xd8a1e681, 0xe7d3fbc8,
-		0x21e1cde6, 0xc33707d6, 0xf4d50d87, 0x455a14ed,
-		0xa9e3e905, 0xfcefa3f8, 0x676f02d9, 0x8d2a4c8a,
-		0xfffa3942, 0x8771f681, 0x6d9d6122, 0xfde5380c,
-		0xa4beea44, 0x4bdecfa9, 0xf6bb4b60, 0xbebfbc70,
-		0x289b7ec6, 0xeaa127fa, 0xd4ef3085, 0x04881d05,
-		0xd9d4d039, 0xe6db99e5, 0x1fa27cf8, 0xc4ac5665,
-		0xf4292244, 0x432aff97, 0xab9423a7, 0xfc93a039,
-		0x655b59c3, 0x8f0ccc92, 0xffeff47d, 0x85845dd1,
-		0x6fa87e4f, 0xfe2ce6e0, 0xa3014314, 0x4e0811a1,
-		0xf7537e82, 0xbd3af235, 0x2ad7d2bb, 0xeb86d391
-	};
-	return (k);
-}
+// static uint32_t	k(void)
+// {
+// 	uint32_t	k[64] = {
+// 		0xd76aa478, 0xe8c7b756, 0x242070db, 0xc1bdceee,
+// 		0xf57c0faf, 0x4787c62a, 0xa8304613, 0xfd469501,
+// 		0x698098d8, 0x8b44f7af, 0xffff5bb1, 0x895cd7be,
+// 		0x6b901122, 0xfd987193, 0xa679438e, 0x49b40821,
+// 		0xf61e2562, 0xc040b340, 0x265e5a51, 0xe9b6c7aa,
+// 		0xd62f105d, 0x02441453, 0xd8a1e681, 0xe7d3fbc8,
+// 		0x21e1cde6, 0xc33707d6, 0xf4d50d87, 0x455a14ed,
+// 		0xa9e3e905, 0xfcefa3f8, 0x676f02d9, 0x8d2a4c8a,
+// 		0xfffa3942, 0x8771f681, 0x6d9d6122, 0xfde5380c,
+// 		0xa4beea44, 0x4bdecfa9, 0xf6bb4b60, 0xbebfbc70,
+// 		0x289b7ec6, 0xeaa127fa, 0xd4ef3085, 0x04881d05,
+// 		0xd9d4d039, 0xe6db99e5, 0x1fa27cf8, 0xc4ac5665,
+// 		0xf4292244, 0x432aff97, 0xab9423a7, 0xfc93a039,
+// 		0x655b59c3, 0x8f0ccc92, 0xffeff47d, 0x85845dd1,
+// 		0x6fa87e4f, 0xfe2ce6e0, 0xa3014314, 0x4e0811a1,
+// 		0xf7537e82, 0xbd3af235, 0x2ad7d2bb, 0xeb86d391
+// 	};
+// 	return (k);
+// }
 
 static unsigned long long	strlenu(const char *message)
 {
@@ -136,30 +136,69 @@ static unsigned long long	strlenu(const char *message)
 	return (len);
 }
 
-static char	*prepare_message(char *message)
+static void	debug_padded_message(const char *str, size_t size)
+{
+	int		bit;
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (i < size)
+	{
+		j = 0;
+		while (j < 8)
+		{
+			bit = 8;
+			while (--bit >= 0)
+				((unsigned char)(str[i + j]) & (1 << bit)) ? write(1, "1", 1) : write(1, "0", 1);
+			write(1, " ", 1);
+			j++;
+		}
+		j = 0;
+		while (j < 8)
+		{
+			((unsigned char)str[i + j] > 32 && (unsigned char)str[i + j] < 128) ? write(1, &str[i + j], 1) : write(1, ".", 1);
+			j++;
+		}
+		write(1, "\n", 1);
+		i += 8;
+	}
+}
+
+static char	*prepare_padded_message(char *message)
 {
 	char				*new;
 	unsigned long long	len;
-	unsigned long long	full;
+	unsigned long long	padded_len;
 
 	len = strlenu(message);
-	full = len + 1 + (512 - (len + 1) % 512);
-	if (!(new = (char *)ft_memalloc(len)))
+	padded_len = (56 - len % 64 == 0) ? 64 + len + 1 : 56 - len % 64 + len + 1;
+	if (!(new = (char *)ft_memalloc((padded_len + 8))))
 		return (NULL);
-	
+	new = ft_strncpys(new, message, len);
+	new[len] = (unsigned char)0b10000000;
+	new[padded_len - 1] = (8 * len >> 56) & 0xFF;
+	new[padded_len + 0] = (8 * len >> 48) & 0xFF;
+	new[padded_len + 1] = (8 * len >> 40) & 0xFF;
+	new[padded_len + 2] = (8 * len >> 32) & 0xFF;
+	new[padded_len + 3] = (8 * len >> 24) & 0xFF;
+	new[padded_len + 4] = (8 * len >> 16) & 0xFF;
+	new[padded_len + 5] = (8 * len >> 8) & 0xFF;
+	new[padded_len + 6] = (8 * len) & 0xFF;
+	debug_padded_message(new, padded_len);
+	return (new);
 }
 
-static char	*footprint_block(uint32_t *r, uint32_t *k, uint32_t *block)
-{
+// static char	*footprint_block(uint32_t *r, uint32_t *k, uint32_t *block)
+// {
 
-}
+// }
 
 char		*convert_md5(char *input)
 {
-	char	*output;
+	char				*output;
 
-	(void)input;
-	if (!(output = ft_strdups("MD5 hashed string")))
+	if (!(output = prepare_padded_message(input)))
 		return (NULL);
 	return (output);
 }
