@@ -8,15 +8,21 @@ CFLAGS		= 	-g3 -Wall -Wextra -Werror -I$(INC_DIR)
 SRC_DIR 	=	./src/
 SRC			=	ssl.c														\
 				md5/md5.c													\
+				md5/memory.c												\
+				md5/padding.c												\
+				md5/process.c												\
 				sha256/sha256.c												\
-				sha256/crypter.c												\
+				sha256/crypter.c											\
 				misc/dispatcher/dispatcher.c								\
 				misc/display/display.c										\
 				misc/errors/errors.c										\
 				misc/memory/free.c											\
 				misc/memory/malloc_arg.c									\
 				misc/memory/malloc_ssl.c									\
-				misc/parser/parser.c
+				misc/parser/parser.c										\
+				misc/utils/left_rotate.c									\
+				misc/utils/print_memory.c									\
+				misc/utils/strlenu.c
 
 SRCS		=	$(addprefix $(SRC_DIR), $(SRC_ALL))
 
@@ -51,6 +57,7 @@ $(OBJ_DIR):
 				@mkdir -p $(OBJ_DIR)/misc/errors
 				@mkdir -p $(OBJ_DIR)/misc/memory
 				@mkdir -p $(OBJ_DIR)/misc/parser
+				@mkdir -p $(OBJ_DIR)/misc/utils
 
 clean:
 				@make clean -C libft/
