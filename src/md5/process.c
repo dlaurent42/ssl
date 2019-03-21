@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 15:14:59 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/20 15:45:43 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/21 16:23:18 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,39 +38,16 @@ static uint32_t	k[64] = {
 	0xf7537e82, 0xbd3af235, 0x2ad7d2bb, 0xeb86d391
 };
 
-// //initialiser les valeurs de hachage :
-// var entier a := h0
-// var entier b := h1
-// var entier c := h2
-// var entier d := h3
+static unsigned long long	md5_get_word_value(t_md5 *md5)
+{
+	unsigned long long	sum;
 
-// //Boucle principale :
-// pour i de 0 à 63 faire
-//     si 0 ≤ i ≤ 15 alors
-//           f := (b et c) ou ((non b) et d)
-//           g := i
-//     sinon si 16 ≤ i ≤ 31 alors
-//           f := (d et b) ou ((non d) et c)
-//           g := (5×i + 1) mod 16
-//     sinon si 32 ≤ i ≤ 47 alors
-//           f := b xor c xor d
-//           g := (3×i + 5) mod 16
-//     sinon si 48 ≤ i ≤ 63 alors
-//         f := c xor (b ou (non d))
-//         g := (7×i) mod 16
-//     fin si
-//     var entier temp := d
-//     d := c
-//     c := b
-//     b := ((a + f + k[i] + w[g]) leftrotate r[i]) + b
-//     a := temp
-// fin pour
-
-// //ajouter le résultat au bloc précédent :
-// h0 := h0 + a
-// h1 := h1 + b 
-// h2 := h2 + c
-// h3 := h3 + d
+	sum = (md5->padded_str[md5->g] << 24)
+	| (md5->padded_str[md5->g + 1] << 16)
+	| (md5->padded_str[md5->g + 2] << 8)
+	| md5->padded_str[md5->g + 3];
+	return (sum);
+}
 
 static void		md5_loop_execution(t_md5 **md5, unsigned long long i)
 {
@@ -96,7 +73,7 @@ static void		md5_loop_execution(t_md5 **md5, unsigned long long i)
 	(*md5)->d = (*md5)->c;
 	(*md5)->c = (*md5)->b;
 	(*md5)->b += left_rotate(
-		((*md5)->a + (*md5)->f + k[i] + (*md5)->padded_str[(*md5)->g]), r[i]);
+		((*md5)->a + (*md5)->f + k[i] + md5_get_word_value(*md5)), r[i]);
 	(*md5)->a = temp;
 }
 
@@ -130,10 +107,10 @@ char			*process_md5(t_md5 **md5)
 			i += 4;
 		}
 	}
-	printf("%u\n", (*md5)->h0);
-	printf("%u\n", (*md5)->h1);
-	printf("%u\n", (*md5)->h2);
-	printf("%u\n", (*md5)->h3);
+	printf("%lld\n", (*md5)->h0);
+	printf("%lld\n", (*md5)->h1);
+	printf("%lld\n", (*md5)->h2);
+	printf("%lld\n", (*md5)->h3);
 	printf("%s\n", ulltoa_base("0123456789abcdef", (*md5)->h0));
 	printf("%s\n", ulltoa_base("0123456789abcdef", (*md5)->h1));
 	printf("%s\n", ulltoa_base("0123456789abcdef", (*md5)->h2));
