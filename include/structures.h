@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:01:50 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/20 15:03:37 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/21 17:43:19 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ typedef struct				s_md5
 	uint32_t				b;
 	uint32_t				c;
 	uint32_t				d;
-	uint32_t				f;
-	uint32_t				g;
+	uint64_t				f;
+	uint64_t				g;
 	char					*padded_str;
-	unsigned long long		initial_length;
-	unsigned long long		padded_str_length;
+	uint64_t				initial_length;
+	uint64_t				padded_str_length;
 }							t_md5;
 
 typedef struct				s_argument

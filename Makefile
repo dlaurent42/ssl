@@ -22,6 +22,7 @@ SRC			=	ssl.c														\
 				misc/parser/parser.c										\
 				misc/utils/left_rotate.c									\
 				misc/utils/print_memory.c									\
+				misc/utils/reverse_bits.c									\
 				misc/utils/strlenu.c
 
 SRCS		=	$(addprefix $(SRC_DIR), $(SRC_ALL))

@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:01:49 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/20 15:39:49 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/21 18:14:48 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ void				parse_arguments(t_ssl **ssl, char **av);
 /*
 **	UTILS:		contains all functions common to any hash
 */
-unsigned int		left_rotate(const unsigned int value, int shift);
+uint32_t			rotate_left(uint32_t x, uint32_t c);
+uint32_t			reverse_bits(uint32_t value);
 void				print_memory(const char *str, size_t size);
 unsigned long long	strlenu(const char *message);
 

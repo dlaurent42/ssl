@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   left_rotate.c                                      :+:      :+:    :+:   */
+/*   reverse_bits.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/20 15:10:57 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/21 17:34:20 by dlaurent         ###   ########.fr       */
+/*   Created: 2019/03/21 17:34:50 by dlaurent          #+#    #+#             */
+/*   Updated: 2019/03/21 17:35:10 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ssl.h"
 
-uint32_t	rotate_left(uint32_t x, uint32_t c)
+uint32_t	reverse_bits(uint32_t value)
 {
-	return ((x << c) | (x >> (32 - c)));
+	return (value & 0x000000FFU) << 24 | (value & 0x0000FF00U) << 8 |\
+	(value & 0x00FF0000U) >> 8 | (value & 0xFF000000U) >> 24;
 }

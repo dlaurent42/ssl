@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 15:12:21 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/20 15:12:38 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/21 18:39:53 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ t_md5		*initialize_md5_structure(char *input)
 	md5->h3 = 0x10325476;
 	md5->initial_length = strlenu(input);
 	md5->padded_str_length = (56 - md5->initial_length % 64 == 0)
-		? 64 + md5->initial_length + 1 + 8
-		: 56 - md5->initial_length % 64 + md5->initial_length + 1 + 8;
+		? 64 + md5->initial_length + 8
+		: 56 - md5->initial_length % 64 + md5->initial_length + 8;
+	ft_printf("initia length : %d\n", md5->initial_length);
+	ft_printf("padded length : %d\n", md5->padded_str_length);
 	md5->padded_str = prepare_padded_message(
 		input,
 		md5->initial_length,
