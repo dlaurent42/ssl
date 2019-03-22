@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:01:49 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/21 18:14:48 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/22 16:35:46 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 **				It contains all prototypes relative to md5 hash
 */
 char				*convert_md5(char *input);
-char				*process_md5(t_md5 **md5);
+void				process_md5(t_md5 **md5);
 t_md5				*initialize_md5_structure(char *input);
 void				destroy_md5_structure(t_md5 *md5);
 char				*prepare_padded_message(

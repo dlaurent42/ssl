@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 17:08:07 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/18 17:26:21 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/22 16:57:54 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static void	read_from_file(t_ssl *ssl, t_argument *arg)
 		arg->error = EISDIR;
 	while (arg->error == 0 && (read_return = read(fd, buffer, 1024)) > 0)
 	{
+		ft_printf("read return: %d\n", read_return);
 		buffer[read_return] = '\0';
 		if (!(arg->file_content = ft_strjoinf(arg->file_content, buffer, 1)))
 		{
