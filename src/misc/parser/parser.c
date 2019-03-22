@@ -6,42 +6,31 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 17:27:33 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/18 14:26:44 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/22 18:38:10 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ssl.h"
 
-static bool	input_available(void)
+static void	parse_files(t_ssl **ssl)
 {
-	fd_set			fds;
-	struct timeval	tv;
+	t_argument	*head;
 
-	tv.tv_sec = 0;
-	tv.tv_usec = 0;
-	FD_ZERO(&fds);
-	FD_SET(STDIN_FILENO, &fds);
-	select(STDIN_FILENO + 1, &fds, NULL, NULL, &tv);
-	return (FD_ISSET(0, &fds));
-}
-
-static void	read_from_stdin(t_ssl **ssl)
-{
-	char	buffer[1024 + 1];
-	char	*stdin;
-	ssize_t	read_return;
-
-	stdin = NULL;
-	ft_bzero(buffer, 1025);
-	while ((read_return = read(STDIN_FILENO, buffer, 1024)) > 0)
+	if (!(*ssl)->argument)
+		return ;
+	head = (*ssl)->argument->head;
+	while ((*ssl)->argument)
 	{
-		buffer[read_return] = '\0';
-		if (!(stdin = ft_strjoinf(stdin, buffer, 1)))
-			err_handler(ERRCODE_MALLOC_FAILED, *ssl);
-		ft_bzero(buffer, 1025);
+		if ((*ssl)->argument->is_file)
+			read_from_file(*ssl, (*ssl)->argument);
+		if ((*ssl)->argument->is_file
+		&& (*ssl)->argument->error > 0
+		&& !(*ssl)->argument->file_content)
+			if (!((*ssl)->argument->file_content = ft_strdups("")))
+				err_handler(ERRCODE_MALLOC_FAILED, *ssl);
+		(*ssl)->argument = (*ssl)->argument->next;
 	}
-	declare_new_argument(ssl, stdin, ARG_TYPE_STDIN);
-	ft_strdel(&stdin);
+	(*ssl)->argument = head;
 }
 
 static void	parse_argument(unsigned char *opt_possible, t_ssl **ssl, char *av)
@@ -56,8 +45,8 @@ static void	parse_argument(unsigned char *opt_possible, t_ssl **ssl, char *av)
 		(*ssl)->options->s = TRUE;
 	else
 		(*opt_possible && (*ssl)->options->s && !(*opt_possible = FALSE))
-			? declare_new_argument(ssl, av, ARG_TYPE_STRING)
-			: declare_new_argument(ssl, av, ARG_TYPE_FILE);
+			? declare_new_argument(ssl, av, ARG_TYPE_STRING, ft_strlens(av))
+			: declare_new_argument(ssl, av, ARG_TYPE_FILE, 0);
 }
 
 void		parse_arguments(t_ssl **ssl, char **av)
@@ -69,8 +58,7 @@ void		parse_arguments(t_ssl **ssl, char **av)
 	opt_possible = TRUE;
 	if (!ssl || !*ssl)
 		return ;
-	if (input_available())
-		read_from_stdin(ssl);
+	read_from_stdin(ssl);
 	while (av[++i])
 		if (i == 1)
 			(*ssl)->hash = ft_strdup(av[i]);
@@ -78,4 +66,5 @@ void		parse_arguments(t_ssl **ssl, char **av)
 			parse_argument(&opt_possible, ssl, av[i]);
 	if (i == 1)
 		err_handler(ERRCODE_SSL_NO_ARG, *ssl);
+	parse_files(ssl);
 }

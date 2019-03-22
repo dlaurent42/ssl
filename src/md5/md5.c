@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:04:37 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/22 16:51:59 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/22 18:51:41 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ static char	*convert_output(t_md5 *md5)
 	return (output);
 }
 
-char		*convert_md5(char *input)
+char		*convert_md5(char *input, size_t size)
 {
 	t_md5	*md5;
 	char	*output;
 
-	if (!(md5 = initialize_md5_structure(input)))
+	if (!(md5 = initialize_md5_structure(input, size)))
 		return (NULL);
 	process_md5(&md5);
 	output = convert_output(md5);

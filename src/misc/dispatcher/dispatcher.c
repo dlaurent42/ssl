@@ -6,13 +6,13 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 17:16:26 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/18 15:26:03 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/22 18:53:17 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ssl.h"
 
-static void	hash_arguments(t_ssl *ssl, char *(*f)(char *))
+static void	hash_arguments(t_ssl *ssl, char *(*f)(char *, size_t size))
 {
 	t_argument	*argument;
 
@@ -21,8 +21,8 @@ static void	hash_arguments(t_ssl *ssl, char *(*f)(char *))
 	{
 		if (argument->error == 0)
 			argument->hashed_argument = (argument->is_file)
-				? f(argument->file_content)
-				: f(argument->argument);
+				? f(argument->file_content, argument->content_size)
+				: f(argument->argument, argument->content_size);
 		argument = argument->next;
 	}
 }

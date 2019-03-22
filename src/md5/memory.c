@@ -6,13 +6,13 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 15:12:21 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/22 16:31:50 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/22 18:51:58 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ssl.h"
 
-t_md5		*initialize_md5_structure(char *input)
+t_md5		*initialize_md5_structure(char *input, size_t size)
 {
 	t_md5	*md5;
 
@@ -22,7 +22,7 @@ t_md5		*initialize_md5_structure(char *input)
 	md5->h1 = 0xEFCDAB89;
 	md5->h2 = 0x98BADCFE;
 	md5->h3 = 0x10325476;
-	md5->initial_length = strlenu(input);
+	md5->initial_length = size;
 	if (md5->initial_length % 64 == 56)
 		md5->padded_str_length = 72 + md5->initial_length;
 	else

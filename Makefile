@@ -21,10 +21,14 @@ SRC			=	ssl.c														\
 				misc/memory/malloc_arg.c									\
 				misc/memory/malloc_ssl.c									\
 				misc/parser/parser.c										\
+				misc/parser/read_file.c										\
+				misc/parser/read_stdin.c									\
 				misc/utils/left_rotate.c									\
 				misc/utils/print_memory.c									\
 				misc/utils/reverse_bits.c									\
-				misc/utils/strlenu.c
+				misc/utils/strlenu.c										\
+				misc/utils/strnjoins.c										\
+				misc/utils/strnjoinsf1.c
 
 SRCS		=	$(addprefix $(SRC_DIR), $(SRC_ALL))
 
