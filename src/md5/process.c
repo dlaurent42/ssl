@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 15:14:59 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/21 18:48:46 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/22 15:27:00 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ static void		md5_update_fg(t_md5 **md5, uint64_t i)
 {
 	if (i < 16)
 	{
-		(*md5)->f = ((*md5)->b & (*md5)->c) | ((!(*md5)->b) & (*md5)->d);
+		(*md5)->f = ((*md5)->b & (*md5)->c) | ((~(*md5)->b) & (*md5)->d);
 		(*md5)->g = i;
 	}
 	else if (i < 32)
 	{
-		(*md5)->f = ((*md5)->d & (*md5)->b) | ((!(*md5)->d) & (*md5)->c);
+		(*md5)->f = ((*md5)->d & (*md5)->b) | ((~(*md5)->d) & (*md5)->c);
 		(*md5)->g = (5 * i + 1) % 16;
 	}
 	else if (i < 48)
@@ -31,26 +31,36 @@ static void		md5_update_fg(t_md5 **md5, uint64_t i)
 	}
 	else
 	{
-		(*md5)->f = (*md5)->c ^ ((*md5)->b | (!(*md5)->d));
+		(*md5)->f = (*md5)->c ^ ((*md5)->b | (~(*md5)->d));
 		(*md5)->g = (7 * i) % 16;
 	}
 }
 
-static void		md5_update_abcd_based_on_fg(t_md5 **md5, uint64_t i)
+static void		md5_update_abcd_based_on_fg(t_md5 **md5, uint64_t i, uint64_t j)
 {
-	uint32_t	temp;
-
-	temp = (*md5)->d;
+	ft_printf("f [%u] = a [%u] + k [%u] + pad [%u] & i = %u | l = %u\n",
+	(*md5)->f,
+	(*md5)->a,
+	g_md5_k[i],
+	(uint32_t)(((unsigned char)(*md5)->padded_str[(*md5)->g * 4 + 3] << 24)
+		| ((unsigned char)(*md5)->padded_str[(*md5)->g * 4 + 2] << 16)
+		| ((unsigned char)(*md5)->padded_str[(*md5)->g * 4 + 1] << 8)
+		| (unsigned char)(*md5)->padded_str[(*md5)->g * 4 + 0]),
+	j, i);
+	ft_printf("%d.%d.%d.%d\n",
+		(unsigned char)(*md5)->padded_str[(*md5)->g * 4 + 3],
+		(unsigned char)(*md5)->padded_str[(*md5)->g * 4 + 2],
+		(unsigned char)(*md5)->padded_str[(*md5)->g * 4 + 1],
+		(unsigned char)(*md5)->padded_str[(*md5)->g * 4 + 0]);
+	(*md5)->f += (*md5)->a + g_md5_k[i]
+	+ (uint32_t)(((unsigned char)(*md5)->padded_str[(*md5)->g * 4 + 3] << 24)
+	| ((unsigned char)(*md5)->padded_str[(*md5)->g * 4 + 2] << 16)
+	| ((unsigned char)(*md5)->padded_str[(*md5)->g * 4 + 1] << 8)
+	| (unsigned char)(*md5)->padded_str[(*md5)->g * 4 + 0]);
+	(*md5)->a = (*md5)->d;
 	(*md5)->d = (*md5)->c;
 	(*md5)->c = (*md5)->b;
-	(*md5)->b += rotate_left(
-		((*md5)->a + (*md5)->f + g_md5_k[i]
-			+ (((*md5)->padded_str[(*md5)->g] << 24)
-			| ((*md5)->padded_str[(*md5)->g + 1] << 16)
-			| ((*md5)->padded_str[(*md5)->g + 2] << 8)
-			| (*md5)->padded_str[(*md5)->g + 3])),
-		g_md5_r[i]);
-	(*md5)->a = temp;
+	(*md5)->b += rotate_left((*md5)->f, g_md5_r[i]);
 }
 
 static void		md5_update_abcd(t_md5 **md5)
@@ -87,6 +97,8 @@ void		debug_md5(t_md5 *md5, char *message)
 	ft_printf("b: %u\n", md5->b);
 	ft_printf("c: %u\n", md5->c);
 	ft_printf("d: %u\n", md5->d);
+	ft_printf("f: %u\n", md5->f);
+	ft_printf("g: %u\n", md5->g);
 }
 
 char			*process_md5(t_md5 **md5)
@@ -95,7 +107,7 @@ char			*process_md5(t_md5 **md5)
 	uint64_t j;
 
 	i = 0;
-	ft_printf("%d\n", (*md5)->padded_str_length);
+	ft_printf("Padded_str_length: %d\n", (*md5)->padded_str_length);
 	while (i < (*md5)->padded_str_length)
 	{
 		j = 0;
@@ -106,7 +118,7 @@ char			*process_md5(t_md5 **md5)
 		{
 			md5_update_fg(md5, j);
 			debug_md5(*md5, "After stages");
-			md5_update_abcd_based_on_fg(md5, j);
+			md5_update_abcd_based_on_fg(md5, j, i);
 			debug_md5(*md5, "After final abcd");
 			j++;
 		}
