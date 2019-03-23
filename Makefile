@@ -13,6 +13,7 @@ SRC			=	ssl.c														\
 				md5/process.c												\
 				sha256/sha256.c												\
 				sha256/crypter.c											\
+				sha256/utils.c											\
 				misc/dispatcher/dispatcher.c								\
 				misc/display/display.c										\
 				misc/errors/errors.c										\

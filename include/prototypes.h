@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:01:49 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/22 16:35:46 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/23 21:36:43 by azaliaus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,12 @@ char				*prepare_padded_message(
 ********************************    SHA256    **********************************
 **			  It contains all prototypes relative to sha256 hash
 */
-char				*convert_sha256(char *input);
-void				sha256_crypt(t_argument *arg);
+char			*convert_sha256(char *input);
+char			*sha256_crypt(char *input);
+uint32_t		sha_rrotate(uint32_t x, uint32_t n);
+void			sha_rotate(t_sha *sha);
+void			sha256_init(t_sha *sha);
+char			*sha256_convert(t_sha *sha);
 
 /*
 *********************************    MISC    ***********************************
