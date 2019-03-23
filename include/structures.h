@@ -6,7 +6,11 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:01:50 by dlaurent          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/03/23 21:36:50 by azaliaus         ###   ########.fr       */
+=======
+/*   Updated: 2019/03/19 20:43:23 by azaliaus         ###   ########.fr       */
+>>>>>>> ec5e1b09bc1c4964ee9ced9a9f6f0417aa1e7416
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +70,30 @@ typedef struct				s_ssl
 	t_options				*options;
 	t_argument				*argument;
 }							t_ssl;
+
+typedef struct			s_sha
+{
+	uint32_t			status[8];
+	uint32_t			a;
+	uint32_t			b;
+	uint32_t			c;
+	uint32_t			d;
+	uint32_t			e;
+	uint32_t			f;
+	uint32_t			g;
+	uint32_t			h;
+	unsigned int		len;
+	unsigned int		offset;
+	uint32_t			*hash32;
+	uint32_t			*w;
+	uint32_t			tmp;
+	uint32_t			tmp1;
+	uint32_t			tmp2;
+	uint32_t			tmp3;
+	uint32_t			tmp4;
+	uint32_t			tmp5;
+	uint32_t			tmp6;
+}						t_sha;
 
 typedef struct			s_sha
 {
