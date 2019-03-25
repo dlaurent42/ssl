@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 18:29:17 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/22 19:18:04 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/25 12:53:33 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,8 @@ void		read_from_file(t_ssl *ssl, t_argument *arg)
 {
 	int			fd;
 	char		buffer[1024 + 1];
-	char		*file_content;
 	ssize_t		read_return;
 
-	file_content = NULL;
 	ft_bzero(buffer, 1024 + 1);
 	fd = open_handler(&arg);
 	arg->content_size = 0;
