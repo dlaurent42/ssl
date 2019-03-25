@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:04:37 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/25 14:54:42 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/25 17:00:28 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ char		*convert_md5(char *input, size_t size)
 	t_md5	*md5;
 	char	*output;
 
-	ft_printf("Input: %s\nSize: %d\n", input, size);
 	if (!(md5 = initialize_md5_structure(input, size)))
 		return (NULL);
 	process_md5(&md5);
