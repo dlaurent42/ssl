@@ -54,7 +54,7 @@ void				dispatcher(t_ssl **ssl);
 /*
 **	DISPLAY:	handles output of the program in case of successful execution
 */
-void				display(t_ssl *ssl);
+int					display(t_ssl *ssl);
 
 /*
 **	ERRORS:		handle every single fatal error in the program

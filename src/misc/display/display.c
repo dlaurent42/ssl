@@ -80,21 +80,27 @@ static void	print_other_valid_argument(t_ssl *ssl, t_argument *arg)
 				get_hash(ssl->hash), arg->argument, arg->hashed_argument);
 }
 
-void		display(t_ssl *ssl)
+int			display(t_ssl *ssl)
 {
+	int			status;
 	t_argument	*argument;
 
+	status = FALSE;
 	if (!ssl)
-		return ;
+		return (FALSE);
 	argument = ssl->argument;
 	while (argument)
 	{
 		if (argument->is_stdin)
 			print_stdin_argument(ssl->options, argument);
 		else if (argument->is_file && argument->error)
+		{
+			status = TRUE;
 			print_error_argument(ssl, argument);
+		}
 		else
 			print_other_valid_argument(ssl, argument);
 		argument = argument->next;
 	}
+	return (status);
 }

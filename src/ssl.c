@@ -14,13 +14,14 @@
 
 int		main(int ac, char **av)
 {
+	int		status;
 	t_ssl	*ssl;
 
 	(void)ac;
 	ssl = declare_empty_ssl_structure();
 	parse_arguments(&ssl, av);
 	dispatcher(&ssl);
-	display(ssl);
+	status = display(ssl);
 	free_ssl(ssl);
-	return (0);
+	return (status);
 }

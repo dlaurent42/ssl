@@ -1,17 +1,17 @@
 #!/bin/bash
 
-# Case: no argument 01
+# Case: test 01
 
 	# Set test name
-	TEST_LABEL="No argument 01"
-	TEST_NAME="no_argument_01"
+	TEST_LABEL="echo \"pickle rick\" | ./ft_ssl md5"
+	TEST_NAME="subject_test_01"
 
 	# Print message to user
 	echo "...... $TEST_LABEL"
 
 	# Run program
-	valgrind --leak-check=full ./../ft_ssl > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
-	./../ft_ssl > logs/trace_$TEST_NAME 2>&1
+	echo "pickle rick" | valgrind --leak-check=full ./../ft_ssl md5 > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
+	echo "pickle rick" | ./../ft_ssl md5 > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
 	if ! grep -q "definitely lost: 0 bytes in 0 blocks" "logs/trace_valgrind_$TEST_NAME"; then
@@ -35,22 +35,22 @@
 	fi
 
 	# Check ouput
-	if [[ $(< logs/trace_$TEST_NAME) != "usage: ft_ssl command [command opts] [command args]" ]]; then
+	if [[ $(< logs/trace_$TEST_NAME) != "c5e433c1dbd7ba01e3763a9483e74b04" ]]; then
 		echo ".......... Unexpected output"
 	fi
 
-# Case: no argument 02 (same as no argument 01 but with stdin input)
+# Case: test 02
 
 	# Set test name
-	TEST_LABEL="No argument 02"
-	TEST_NAME="no_argument_02"
+	TEST_LABEL="echo \"Do not pity the dead, Harry.\" | ./ft_ssl md5 -p"
+	TEST_NAME="subject_test_02"
 
 	# Print message to user
 	echo "...... $TEST_LABEL"
 
 	# Run program
-	echo "$TEST_LABEL" | valgrind --leak-check=full ./../ft_ssl > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
-	echo "$TEST_LABEL" | ./../ft_ssl > logs/trace_$TEST_NAME 2>&1
+	echo "Do not pity the dead, Harry." | valgrind --leak-check=full ./../ft_ssl md5 -p > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
+	echo "Do not pity the dead, Harry." | ./../ft_ssl md5 -p > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
 	if ! grep -q "definitely lost: 0 bytes in 0 blocks" "logs/trace_valgrind_$TEST_NAME"; then
@@ -74,22 +74,25 @@
 	fi
 
 	# Check ouput
-	if [[ $(< logs/trace_$TEST_NAME) != "usage: ft_ssl command [command opts] [command args]" ]]; then
+	if ! grep -q "Do not pity the dead, Harry." "logs/trace_$TEST_NAME" "logs/trace_$TEST_NAME"; then
+		echo ".......... Unexpected output"
+	fi
+	if ! grep -q "2d95365bc44bf0a298e09a3ab7b34d2f" "logs/trace_$TEST_NAME" "logs/trace_$TEST_NAME"; then
 		echo ".......... Unexpected output"
 	fi
 
-# Case: invalid command 01
+# Case: test 03
 
 	# Set test name
-	TEST_LABEL="Invalid command 01"
-	TEST_NAME="Invalid_command_01"
+	TEST_LABEL="echo \"Pity the living.\" | ./ft_ssl md5 -q -r"
+	TEST_NAME="subject_test_03"
 
 	# Print message to user
 	echo "...... $TEST_LABEL"
 
 	# Run program
-	valgrind --leak-check=full ./../ft_ssl x > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
-	./../ft_ssl x > logs/trace_$TEST_NAME 2>&1
+	echo "Pity the living." | valgrind --leak-check=full ./../ft_ssl md5 -q -r > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
+	echo "Pity the living." | ./../ft_ssl md5 -q -r > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
 	if ! grep -q "definitely lost: 0 bytes in 0 blocks" "logs/trace_valgrind_$TEST_NAME"; then
@@ -113,22 +116,25 @@
 	fi
 
 	# Check ouput
-	if ! grep -q "ft_ssl: Error: 'x' is an invalid command." "logs/trace_$TEST_NAME"; then
+	if [[ $(< logs/trace_$TEST_NAME) != "e20c3b973f63482a778f3fd1869b7f25" ]]; then
 		echo ".......... Unexpected output"
 	fi
 
-# Case: invalid command 02 (same as invalid command 01 but with stdin input)
+
+# Case: test 04
+
+	echo "And above all," > file
 
 	# Set test name
-	TEST_LABEL="Invalid command 02"
-	TEST_NAME="Invalid_command_02"
+	TEST_LABEL="./ft_ssl md5 file"
+	TEST_NAME="subject_test_04"
 
 	# Print message to user
 	echo "...... $TEST_LABEL"
 
 	# Run program
-	echo "$TEST_LABEL" | valgrind --leak-check=full ./../ft_ssl x > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
-	echo "$TEST_LABEL" | ./../ft_ssl x > logs/trace_$TEST_NAME 2>&1
+	valgrind --leak-check=full ./../ft_ssl md5 file > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
+	./../ft_ssl md5 file > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
 	if ! grep -q "definitely lost: 0 bytes in 0 blocks" "logs/trace_valgrind_$TEST_NAME"; then
@@ -152,22 +158,22 @@
 	fi
 
 	# Check ouput
-	if ! grep -q "ft_ssl: Error: 'x' is an invalid command." "logs/trace_$TEST_NAME"; then
+	if [[ $(< logs/trace_$TEST_NAME) != "MD5 (file) = 53d53ea94217b259c11a5a2d104ec58a" ]]; then
 		echo ".......... Unexpected output"
 	fi
 
-# Case: invalid command 03 (same as invalid command 01 but with arg input)
+# Case: test 05
 
 	# Set test name
-	TEST_LABEL="Invalid command 03"
-	TEST_NAME="Invalid_command_03"
+	TEST_LABEL="./ft_ssl md5 -r file"
+	TEST_NAME="subject_test_05"
 
 	# Print message to user
 	echo "...... $TEST_LABEL"
 
 	# Run program
-	valgrind --leak-check=full ./../ft_ssl x $TEST_LABEL > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
-	./../ft_ssl x $TEST_LABEL > logs/trace_$TEST_NAME 2>&1
+	valgrind --leak-check=full ./../ft_ssl md5 -r file > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
+	./../ft_ssl md5 -r file > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
 	if ! grep -q "definitely lost: 0 bytes in 0 blocks" "logs/trace_valgrind_$TEST_NAME"; then
@@ -191,22 +197,22 @@
 	fi
 
 	# Check ouput
-	if ! grep -q "ft_ssl: Error: 'x' is an invalid command." "logs/trace_$TEST_NAME"; then
+	if [[ $(< logs/trace_$TEST_NAME) != "53d53ea94217b259c11a5a2d104ec58a file" ]]; then
 		echo ".......... Unexpected output"
 	fi
 
-# Case: invalid command 04 (same as invalid command 01 but with bot stdin and arg input)
+# Case: test 06
 
 	# Set test name
-	TEST_LABEL="Invalid command 04"
-	TEST_NAME="Invalid_command_04"
+	TEST_LABEL="./ft_ssl md5 -s \"pity those that aren't following baerista on spotify.\""
+	TEST_NAME="subject_test_06"
 
 	# Print message to user
 	echo "...... $TEST_LABEL"
 
 	# Run program
-	echo "$TEST_LABEL" | valgrind --leak-check=full ./../ft_ssl x $TEST_LABEL > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
-	echo "$TEST_LABEL" | ./../ft_ssl x $TEST_LABEL > logs/trace_$TEST_NAME 2>&1
+	valgrind --leak-check=full ./../ft_ssl md5 -s "pity those that aren't following baerista on spotify." > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
+	./../ft_ssl md5 -s "pity those that aren't following baerista on spotify." > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
 	if ! grep -q "definitely lost: 0 bytes in 0 blocks" "logs/trace_valgrind_$TEST_NAME"; then
@@ -230,22 +236,22 @@
 	fi
 
 	# Check ouput
-	if ! grep -q "ft_ssl: Error: 'x' is an invalid command." "logs/trace_$TEST_NAME"; then
+	if [[ $(< logs/trace_$TEST_NAME) != "MD5 (\"pity those that aren't following baerista on spotify.\") = a3c990a1964705d9bf0e602f44572f5f" ]]; then
 		echo ".......... Unexpected output"
 	fi
 
-# Case: invalid command 05 (same as invalid command 04 but with options)
+# Case: test 07
 
 	# Set test name
-	TEST_LABEL="Invalid command 05"
-	TEST_NAME="Invalid_command_05"
+	TEST_LABEL="echo \"be sure to handle edge cases carefully\" | ./ft_ssl md5 -p file"
+	TEST_NAME="subject_test_07"
 
 	# Print message to user
 	echo "...... $TEST_LABEL"
 
 	# Run program
-	echo "$TEST_LABEL" | valgrind --leak-check=full ./../ft_ssl x -s $TEST_LABEL > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
-	echo "$TEST_LABEL" | ./../ft_ssl x -s $TEST_LABEL > logs/trace_$TEST_NAME 2>&1
+	echo "be sure to handle edge cases carefully" | valgrind --leak-check=full ./../ft_ssl md5 -p file > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
+	echo "be sure to handle edge cases carefully" | ./../ft_ssl md5 -p file > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
 	if ! grep -q "definitely lost: 0 bytes in 0 blocks" "logs/trace_valgrind_$TEST_NAME"; then
@@ -269,22 +275,28 @@
 	fi
 
 	# Check ouput
-	if ! grep -q "ft_ssl: Error: 'x' is an invalid command." "logs/trace_$TEST_NAME"; then
+	if ! grep -q "be sure to handle edge cases carefully" "logs/trace_$TEST_NAME"; then
+		echo ".......... Unexpected output"
+	fi
+	if ! grep -q "3553dc7dc5963b583c056d1b9fa3349c" "logs/trace_$TEST_NAME"; then
+		echo ".......... Unexpected output"
+	fi
+	if ! grep -q "MD5 (file) = 53d53ea94217b259c11a5a2d104ec58a" "logs/trace_$TEST_NAME"; then
 		echo ".......... Unexpected output"
 	fi
 
-# Case: File not found
+# Case: test 08
 
 	# Set test name
-	TEST_LABEL="File not found"
-	TEST_NAME="file_not_found"
+	TEST_LABEL="echo \"some of this will not make sense at first\" | ./ft_ssl md5 file"
+	TEST_NAME="subject_test_08"
 
 	# Print message to user
 	echo "...... $TEST_LABEL"
 
 	# Run program
-	valgrind --leak-check=full ./../ft_ssl md5 resources/testing_everything > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
-	./../ft_ssl md5 resources/testing_everything > logs/trace_$TEST_NAME 2>&1
+	echo "some of this will not make sense at first" | valgrind --leak-check=full ./../ft_ssl md5 file > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
+	echo "some of this will not make sense at first" | ./../ft_ssl md5 file > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
 	if ! grep -q "definitely lost: 0 bytes in 0 blocks" "logs/trace_valgrind_$TEST_NAME"; then
@@ -308,22 +320,22 @@
 	fi
 
 	# Check ouput
-	if ! grep -q "ft_ssl: md5: resources/testing_everything: No such file or directory." "logs/trace_$TEST_NAME"; then
+	if [[ $(< logs/trace_$TEST_NAME) != "MD5 (file) = 53d53ea94217b259c11a5a2d104ec58a" ]]; then
 		echo ".......... Unexpected output"
 	fi
 
-# Case: Permission denied
+# Case: test 08
 
 	# Set test name
-	TEST_LABEL="Permission denied"
-	TEST_NAME="permission_denied"
+	TEST_LABEL="echo \"but eventually you will understand\" | ./ft_ssl md5 -p -r file"
+	TEST_NAME="subject_test_08"
 
 	# Print message to user
 	echo "...... $TEST_LABEL"
 
 	# Run program
-	valgrind --leak-check=full ./../ft_ssl md5 resources/permissions > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
-	./../ft_ssl md5 resources/permissions > logs/trace_$TEST_NAME 2>&1
+	echo "but eventually you will understand" | valgrind --leak-check=full ./../ft_ssl md5 -p -r file > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
+	echo "but eventually you will understand" | ./../ft_ssl md5 -p -r file > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
 	if ! grep -q "definitely lost: 0 bytes in 0 blocks" "logs/trace_valgrind_$TEST_NAME"; then
@@ -347,22 +359,28 @@
 	fi
 
 	# Check ouput
-	if ! grep -q "ft_ssl: md5: resources/permissions: Permission denied." "logs/trace_$TEST_NAME"; then
+	if ! grep -q "but eventually you will understand" "logs/trace_$TEST_NAME"; then
+		echo ".......... Unexpected output"
+	fi
+	if ! grep -q "dcdd84e0f635694d2a943fa8d3905281" "logs/trace_$TEST_NAME"; then
+		echo ".......... Unexpected output"
+	fi
+	if ! grep -q "53d53ea94217b259c11a5a2d104ec58a file" "logs/trace_$TEST_NAME"; then
 		echo ".......... Unexpected output"
 	fi
 
-# Case: Permission denied
+# Case: test 09
 
 	# Set test name
-	TEST_LABEL="Directory"
-	TEST_NAME="directory"
+	TEST_LABEL="echo \"GL HF let's go\" | ./ft_ssl md5 -p -s \"foo\" file"
+	TEST_NAME="subject_test_09"
 
 	# Print message to user
 	echo "...... $TEST_LABEL"
 
 	# Run program
-	valgrind --leak-check=full ./../ft_ssl md5 resources/folder > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
-	./../ft_ssl md5 resources/folder > logs/trace_$TEST_NAME 2>&1
+	echo "GL HF let's go" | valgrind --leak-check=full ./../ft_ssl md5 -p -s "foo" file > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
+	echo "GL HF let's go" | ./../ft_ssl md5 -p -s "foo" file > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
 	if ! grep -q "definitely lost: 0 bytes in 0 blocks" "logs/trace_valgrind_$TEST_NAME"; then
@@ -386,22 +404,31 @@
 	fi
 
 	# Check ouput
-	if ! grep -q "ft_ssl: md5: resources/folder: Is a directory." "logs/trace_$TEST_NAME"; then
+	if ! grep -q "GL HF let's go" "logs/trace_$TEST_NAME"; then
+		echo ".......... Unexpected output"
+	fi
+	if ! grep -q "d1e3cc342b6da09480b27ec57ff243e2" "logs/trace_$TEST_NAME"; then
+		echo ".......... Unexpected output"
+	fi
+	if ! grep -q "MD5 (\"foo\") = acbd18db4cc2f85cedef654fccc4a4d8" "logs/trace_$TEST_NAME"; then
+		echo ".......... Unexpected output"
+	fi
+	if ! grep -q "MD5 (file) = 53d53ea94217b259c11a5a2d104ec58a" "logs/trace_$TEST_NAME"; then
 		echo ".......... Unexpected output"
 	fi
 
-# Case: Option s without argument
+# Case: test 10
 
 	# Set test name
-	TEST_LABEL="Option -s without argument"
-	TEST_NAME="option_s_without_arg"
+	TEST_LABEL="echo \"one more thing\" | ./ft_ssl md5 -r -p -s \"foo\" file -s \"bar\""
+	TEST_NAME="subject_test_10"
 
 	# Print message to user
 	echo "...... $TEST_LABEL"
 
 	# Run program
-	valgrind --leak-check=full ./../ft_ssl md5 -s > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
-	./../ft_ssl md5 -s > logs/trace_$TEST_NAME 2>&1
+	echo "one more thing" | valgrind --leak-check=full ./../ft_ssl md5 -r -p -s "foo" file -s "bar" > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
+	echo "one more thing" | ./../ft_ssl md5 -r -p -s "foo" file -s "bar" > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
 	if ! grep -q "definitely lost: 0 bytes in 0 blocks" "logs/trace_valgrind_$TEST_NAME"; then
@@ -425,6 +452,72 @@
 	fi
 
 	# Check ouput
-	if ! grep -q "ft_ssl: md5: option requires an argument -- s" "logs/trace_$TEST_NAME"; then
+	if ! grep -q "one more thing" "logs/trace_$TEST_NAME"; then
 		echo ".......... Unexpected output"
 	fi
+	if ! grep -q "a0bd1876c6f011dd50fae52827f445f5" "logs/trace_$TEST_NAME"; then
+		echo ".......... Unexpected output"
+	fi
+	if ! grep -q "acbd18db4cc2f85cedef654fccc4a4d8 \"foo\"" "logs/trace_$TEST_NAME"; then
+		echo ".......... Unexpected output"
+	fi
+	if ! grep -q "53d53ea94217b259c11a5a2d104ec58a file" "logs/trace_$TEST_NAME"; then
+		echo ".......... Unexpected output"
+	fi
+	if ! grep -q "ft_ssl: md5: -s: No such file or directory" "logs/trace_$TEST_NAME"; then
+		echo ".......... Unexpected output"
+	fi
+	if ! grep -q "ft_ssl: md5: bar: No such file or directory" "logs/trace_$TEST_NAME"; then
+		echo ".......... Unexpected output"
+	fi
+
+# Case: test 11
+
+	# Set test name
+	TEST_LABEL="echo \"just to be extra clear\" | ./ft_ssl md5 -r -q -p -s \"foo\" file"
+	TEST_NAME="subject_test_11"
+
+	# Print message to user
+	echo "...... $TEST_LABEL"
+
+	# Run program
+	echo "just to be extra clear" | valgrind --leak-check=full ./../ft_ssl md5 -r -q -p -s "foo" file > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
+	echo "just to be extra clear" | ./../ft_ssl md5 -r -q -p -s "foo" file > logs/trace_$TEST_NAME 2>&1
+
+	# Check leaks
+	if ! grep -q "definitely lost: 0 bytes in 0 blocks" "logs/trace_valgrind_$TEST_NAME"; then
+		echo ".......... Leaks (definitely lost)"
+	fi
+	if ! grep -q "indirectly lost: 0 bytes in 0 blocks" "logs/trace_valgrind_$TEST_NAME"; then
+		echo ".......... Leaks (indirectly lost)"
+	fi
+
+	# Check double free / segfaults
+	if grep -q "Process terminating with default action" "logs/trace_valgrind_$TEST_NAME"; then
+		echo ".......... Fatal error"
+	fi
+
+	# Check invalid read / write
+	if grep -q "Invalid read" "logs/trace_valgrind_$TEST_NAME"; then
+		echo ".......... Invalid read"
+	fi
+	if grep -q "Invalid write" "logs/trace_valgrind_$TEST_NAME"; then
+		echo ".......... Invalid write"
+	fi
+
+	# Check ouput
+	if ! grep -q "just to be extra clear" "logs/trace_$TEST_NAME"; then
+		echo ".......... Unexpected output"
+	fi
+	if ! grep -q "3ba35f1ea0d170cb3b9a752e3360286c" "logs/trace_$TEST_NAME"; then
+		echo ".......... Unexpected output"
+	fi
+	if ! grep -q "acbd18db4cc2f85cedef654fccc4a4d8" "logs/trace_$TEST_NAME"; then
+		echo ".......... Unexpected output"
+	fi
+	if ! grep -q "53d53ea94217b259c11a5a2d104ec58a" "logs/trace_$TEST_NAME"; then
+		echo ".......... Unexpected output"
+	fi
+
+# Cleaning
+rm file > /dev/null
