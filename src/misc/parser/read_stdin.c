@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 18:29:25 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/22 18:35:23 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/25 13:03:30 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,15 @@ void		read_from_stdin(t_ssl **ssl)
 
 	stdin = NULL;
 	size = 0;
-	ft_bzero(buffer, 1025);
+	ft_bzero(buffer, 1024 + 1);
 	if (!input_available())
 		return ;
 	while ((read_return = read(STDIN_FILENO, buffer, 1024)) > 0)
 	{
-		buffer[read_return] = '\0';
 		if (!(stdin = strnjoinsf1(stdin, buffer, size, read_return)))
 			err_handler(ERRCODE_MALLOC_FAILED, *ssl);
 		size += read_return;
-		ft_bzero(buffer, 1025);
+		ft_bzero(buffer, 1024 + 1);
 	}
 	declare_new_argument(ssl, stdin, ARG_TYPE_STDIN, size);
 	ft_strdel(&stdin);

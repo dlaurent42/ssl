@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:01:49 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/25 13:52:51 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/25 13:53:39 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ uint32_t			rotate_left(uint32_t x, uint32_t c);
 uint32_t			reverse_bits(uint32_t value);
 void				print_memory(const char *str, size_t size);
 unsigned long long	strlenu(const char *message);
-char				*strnjoins(char *s1, char *s2, size_t len1, size_t len2);
 char				*strnjoinsf1(char *s1, char *s2, size_t len1, size_t len2);
 
 #endif

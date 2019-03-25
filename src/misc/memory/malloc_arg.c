@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 17:08:07 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/22 18:27:35 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/25 13:20:27 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,12 @@ void		declare_new_argument(t_ssl **ssl, char *arg, char type, size_t size)
 	if ((*ssl)->argument)
 		(*ssl)->argument->next = new;
 	(*ssl)->argument = new->head;
-	new->argument = (type == ARG_TYPE_STDIN && !arg)
-		? ft_strdups("")
-		: ft_strdups(arg);
+	if (type == ARG_TYPE_STDIN && !arg)
+		new->argument = ft_strdups("");
+	else if (type == ARG_TYPE_STDIN)
+		new->argument = strnjoinsf1(NULL, arg, 0, size);
+	else
+		new->argument = ft_strdups(arg);
 	if (!new->argument)
 		err_handler(ERRCODE_MALLOC_FAILED, *ssl);
 	new->is_file = (type == ARG_TYPE_FILE);

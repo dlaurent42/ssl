@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 15:14:59 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/22 16:36:44 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/25 13:48:21 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,14 @@ static void		md5_update_fg(t_md5 **md5, uint64_t i)
 static void		md5_update_abcd_based_on_fg(t_md5 **md5, uint64_t i, uint64_t j)
 {
 	(*md5)->f += (*md5)->a + g_md5_k[j]
-	+ (uint32_t)(((unsigned char)(*md5)->padded_str[(*md5)->g * 4
-		+ (i / 64) * 64 + 3] << 24)
-	| ((unsigned char)(*md5)->padded_str[(*md5)->g * 4
-		+ (i / 64) * 64 + 2] << 16)
-	| ((unsigned char)(*md5)->padded_str[(*md5)->g * 4
-		+ (i / 64) * 64 + 1] << 8)
-	| (unsigned char)(*md5)->padded_str[(*md5)->g * 4 + (i / 64) * 64 + 0]);
+	+ (uint32_t)(
+		(uint32_t)((unsigned char)((*md5)->padded_str[(*md5)->g
+			* 4 + (i / 64) * 64 + 3]) << 24)
+		| (uint32_t)((unsigned char)((*md5)->padded_str[(*md5)->g
+			* 4 + (i / 64) * 64 + 2]) << 16)
+		| (uint32_t)((unsigned char)((*md5)->padded_str[(*md5)->g
+			* 4 + (i / 64) * 64 + 1]) << 8)
+		| (unsigned char)(*md5)->padded_str[(*md5)->g * 4 + (i / 64) * 64 + 0]);
 	(*md5)->a = (*md5)->d;
 	(*md5)->d = (*md5)->c;
 	(*md5)->c = (*md5)->b;

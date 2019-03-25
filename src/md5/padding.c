@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 15:13:54 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/22 17:01:02 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/25 13:45:51 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*prepare_padded_message(
 
 	if (!(new = (char *)ft_memalloc((padded_len))))
 		return (NULL);
-	new = ft_strncpys(new, message, len);
+	new = ft_memcpy((void *)new, (void *)message, len);
 	new[len] = (unsigned char)0b10000000;
 	new[padded_len - 1] = (8 * len >> 56) & 0xFF;
 	new[padded_len - 2] = (8 * len >> 48) & 0xFF;

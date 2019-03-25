@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 18:29:17 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/25 12:53:33 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/25 13:20:57 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void		read_from_file(t_ssl *ssl, t_argument *arg)
 	arg->content_size = 0;
 	while (arg->error == 0 && (read_return = read(fd, buffer, 1024)) > 0)
 	{
-		buffer[read_return] = '\0';
 		if (!(arg->file_content = strnjoinsf1(
 			arg->file_content, buffer, arg->content_size, read_return)))
 		{

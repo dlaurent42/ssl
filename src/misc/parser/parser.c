@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 17:27:33 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/22 18:38:10 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/25 13:19:00 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,12 @@ static void	parse_files(t_ssl **ssl)
 		if ((*ssl)->argument->is_file
 		&& (*ssl)->argument->error > 0
 		&& !(*ssl)->argument->file_content)
+		{
 			if (!((*ssl)->argument->file_content = ft_strdups("")))
 				err_handler(ERRCODE_MALLOC_FAILED, *ssl);
+			else
+				(*ssl)->argument->content_size = 1;
+		}
 		(*ssl)->argument = (*ssl)->argument->next;
 	}
 	(*ssl)->argument = head;

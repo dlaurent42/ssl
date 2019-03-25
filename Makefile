@@ -27,7 +27,6 @@ SRC			=	ssl.c														\
 				misc/utils/print_memory.c									\
 				misc/utils/reverse_bits.c									\
 				misc/utils/strlenu.c										\
-				misc/utils/strnjoins.c										\
 				misc/utils/strnjoinsf1.c
 
 SRCS		=	$(addprefix $(SRC_DIR), $(SRC_ALL))
