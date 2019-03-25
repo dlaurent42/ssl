@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:01:50 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/25 13:52:28 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/25 14:21:13 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,30 @@ typedef struct				s_md5
 	uint64_t				initial_length;
 	uint64_t				padded_str_length;
 }							t_md5;
+
+typedef struct				s_sha256
+{
+	uint32_t				status[8];
+	uint32_t				a;
+	uint32_t				b;
+	uint32_t				c;
+	uint32_t				d;
+	uint32_t				e;
+	uint32_t				f;
+	uint32_t				g;
+	uint32_t				h;
+	unsigned int			len;
+	unsigned int			offset;
+	uint32_t				*hash32;
+	uint32_t				*w;
+	uint32_t				tmp;
+	uint32_t				tmp1;
+	uint32_t				tmp2;
+	uint32_t				tmp3;
+	uint32_t				tmp4;
+	uint32_t				tmp5;
+	uint32_t				tmp6;
+}							t_sha256;
 
 typedef struct				s_argument
 {
@@ -67,29 +91,5 @@ typedef struct				s_ssl
 	t_options				*options;
 	t_argument				*argument;
 }							t_ssl;
-
-typedef struct			s_sha
-{
-	uint32_t			status[8];
-	uint32_t			a;
-	uint32_t			b;
-	uint32_t			c;
-	uint32_t			d;
-	uint32_t			e;
-	uint32_t			f;
-	uint32_t			g;
-	uint32_t			h;
-	unsigned int		len;
-	unsigned int		offset;
-	uint32_t			*hash32;
-	uint32_t			*w;
-	uint32_t			tmp;
-	uint32_t			tmp1;
-	uint32_t			tmp2;
-	uint32_t			tmp3;
-	uint32_t			tmp4;
-	uint32_t			tmp5;
-	uint32_t			tmp6;
-}						t_sha;
 
 #endif

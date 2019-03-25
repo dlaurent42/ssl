@@ -12,8 +12,9 @@ SRC			=	ssl.c														\
 				md5/padding.c												\
 				md5/process.c												\
 				sha256/sha256.c												\
-				sha256/crypter.c											\
-				sha256/utils.c											\
+				sha256/memory.c												\
+				sha256/padding.c											\
+				sha256/process.c											\
 				misc/dispatcher/dispatcher.c								\
 				misc/display/display.c										\
 				misc/errors/errors.c										\
@@ -23,9 +24,10 @@ SRC			=	ssl.c														\
 				misc/parser/parser.c										\
 				misc/parser/read_file.c										\
 				misc/parser/read_stdin.c									\
-				misc/utils/left_rotate.c									\
+				misc/utils/hex_prepend_zeros.c								\
 				misc/utils/print_memory.c									\
 				misc/utils/reverse_bits.c									\
+				misc/utils/rotate.c											\
 				misc/utils/strlenu.c										\
 				misc/utils/strnjoinsf1.c
 
