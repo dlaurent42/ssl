@@ -10,7 +10,7 @@
 	echo "...... $TEST_LABEL"
 
 	# Run program
-	valgrind --leak-check=full ./../ft_ssl > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
+	valgrind --leak-check=full ./../ft_ssl > logs/trace_valgrind_$TEST_NAME 2>&1
 	./../ft_ssl > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
@@ -49,7 +49,7 @@
 	echo "...... $TEST_LABEL"
 
 	# Run program
-	echo "$TEST_LABEL" | valgrind --leak-check=full ./../ft_ssl > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
+	echo "$TEST_LABEL" | valgrind --leak-check=full ./../ft_ssl > logs/trace_valgrind_$TEST_NAME 2>&1
 	echo "$TEST_LABEL" | ./../ft_ssl > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
@@ -88,7 +88,7 @@
 	echo "...... $TEST_LABEL"
 
 	# Run program
-	valgrind --leak-check=full ./../ft_ssl x > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
+	valgrind --leak-check=full ./../ft_ssl x > logs/trace_valgrind_$TEST_NAME 2>&1
 	./../ft_ssl x > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
@@ -127,7 +127,7 @@
 	echo "...... $TEST_LABEL"
 
 	# Run program
-	echo "$TEST_LABEL" | valgrind --leak-check=full ./../ft_ssl x > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
+	echo "$TEST_LABEL" | valgrind --leak-check=full ./../ft_ssl x > logs/trace_valgrind_$TEST_NAME 2>&1
 	echo "$TEST_LABEL" | ./../ft_ssl x > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
@@ -166,7 +166,7 @@
 	echo "...... $TEST_LABEL"
 
 	# Run program
-	valgrind --leak-check=full ./../ft_ssl x $TEST_LABEL > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
+	valgrind --leak-check=full ./../ft_ssl x $TEST_LABEL > logs/trace_valgrind_$TEST_NAME 2>&1
 	./../ft_ssl x $TEST_LABEL > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
@@ -205,7 +205,7 @@
 	echo "...... $TEST_LABEL"
 
 	# Run program
-	echo "$TEST_LABEL" | valgrind --leak-check=full ./../ft_ssl x $TEST_LABEL > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
+	echo "$TEST_LABEL" | valgrind --leak-check=full ./../ft_ssl x $TEST_LABEL > logs/trace_valgrind_$TEST_NAME 2>&1
 	echo "$TEST_LABEL" | ./../ft_ssl x $TEST_LABEL > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
@@ -244,7 +244,7 @@
 	echo "...... $TEST_LABEL"
 
 	# Run program
-	echo "$TEST_LABEL" | valgrind --leak-check=full ./../ft_ssl x -s $TEST_LABEL > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
+	echo "$TEST_LABEL" | valgrind --leak-check=full ./../ft_ssl x -s $TEST_LABEL > logs/trace_valgrind_$TEST_NAME 2>&1
 	echo "$TEST_LABEL" | ./../ft_ssl x -s $TEST_LABEL > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
@@ -283,7 +283,7 @@
 	echo "...... $TEST_LABEL"
 
 	# Run program
-	valgrind --leak-check=full ./../ft_ssl md5 resources/testing_everything > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
+	valgrind --leak-check=full ./../ft_ssl md5 resources/testing_everything > logs/trace_valgrind_$TEST_NAME 2>&1
 	./../ft_ssl md5 resources/testing_everything > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
@@ -322,7 +322,7 @@
 	echo "...... $TEST_LABEL"
 
 	# Run program
-	valgrind --leak-check=full ./../ft_ssl md5 resources/permissions > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
+	valgrind --leak-check=full ./../ft_ssl md5 resources/permissions > logs/trace_valgrind_$TEST_NAME 2>&1
 	./../ft_ssl md5 resources/permissions > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
@@ -361,7 +361,7 @@
 	echo "...... $TEST_LABEL"
 
 	# Run program
-	valgrind --leak-check=full ./../ft_ssl md5 resources/folder > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
+	valgrind --leak-check=full ./../ft_ssl md5 resources/folder > logs/trace_valgrind_$TEST_NAME 2>&1
 	./../ft_ssl md5 resources/folder > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
@@ -400,7 +400,7 @@
 	echo "...... $TEST_LABEL"
 
 	# Run program
-	valgrind --leak-check=full ./../ft_ssl md5 -s > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
+	valgrind --leak-check=full ./../ft_ssl md5 -s > logs/trace_valgrind_$TEST_NAME 2>&1
 	./../ft_ssl md5 -s > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks

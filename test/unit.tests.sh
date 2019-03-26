@@ -29,8 +29,6 @@ echo "Running subject tests..."
 ./unit.subject.tests.sh
 echo ""
 
-exit
-
 # RUNNING ERRORS TESTS
 echo "Running tests on md5..."
 ./unit.md5.tests.sh

@@ -10,7 +10,7 @@
 	echo "...... $TEST_LABEL"
 
 	# Run program
-	echo "pickle rick" | valgrind --leak-check=full ./../ft_ssl md5 > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
+	echo "pickle rick" | valgrind --leak-check=full ./../ft_ssl md5 > logs/trace_valgrind_$TEST_NAME 2>&1
 	echo "pickle rick" | ./../ft_ssl md5 > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
@@ -49,7 +49,7 @@
 	echo "...... $TEST_LABEL"
 
 	# Run program
-	echo "Do not pity the dead, Harry." | valgrind --leak-check=full ./../ft_ssl md5 -p > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
+	echo "Do not pity the dead, Harry." | valgrind --leak-check=full ./../ft_ssl md5 -p > logs/trace_valgrind_$TEST_NAME 2>&1
 	echo "Do not pity the dead, Harry." | ./../ft_ssl md5 -p > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
@@ -91,7 +91,7 @@
 	echo "...... $TEST_LABEL"
 
 	# Run program
-	echo "Pity the living." | valgrind --leak-check=full ./../ft_ssl md5 -q -r > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
+	echo "Pity the living." | valgrind --leak-check=full ./../ft_ssl md5 -q -r > logs/trace_valgrind_$TEST_NAME 2>&1
 	echo "Pity the living." | ./../ft_ssl md5 -q -r > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
@@ -133,7 +133,7 @@
 	echo "...... $TEST_LABEL"
 
 	# Run program
-	valgrind --leak-check=full ./../ft_ssl md5 file > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
+	valgrind --leak-check=full ./../ft_ssl md5 file > logs/trace_valgrind_$TEST_NAME 2>&1
 	./../ft_ssl md5 file > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
@@ -172,7 +172,7 @@
 	echo "...... $TEST_LABEL"
 
 	# Run program
-	valgrind --leak-check=full ./../ft_ssl md5 -r file > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
+	valgrind --leak-check=full ./../ft_ssl md5 -r file > logs/trace_valgrind_$TEST_NAME 2>&1
 	./../ft_ssl md5 -r file > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
@@ -211,7 +211,7 @@
 	echo "...... $TEST_LABEL"
 
 	# Run program
-	valgrind --leak-check=full ./../ft_ssl md5 -s "pity those that aren't following baerista on spotify." > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
+	valgrind --leak-check=full ./../ft_ssl md5 -s "pity those that aren't following baerista on spotify." > logs/trace_valgrind_$TEST_NAME 2>&1
 	./../ft_ssl md5 -s "pity those that aren't following baerista on spotify." > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
@@ -250,7 +250,7 @@
 	echo "...... $TEST_LABEL"
 
 	# Run program
-	echo "be sure to handle edge cases carefully" | valgrind --leak-check=full ./../ft_ssl md5 -p file > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
+	echo "be sure to handle edge cases carefully" | valgrind --leak-check=full ./../ft_ssl md5 -p file > logs/trace_valgrind_$TEST_NAME 2>&1
 	echo "be sure to handle edge cases carefully" | ./../ft_ssl md5 -p file > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
@@ -295,7 +295,7 @@
 	echo "...... $TEST_LABEL"
 
 	# Run program
-	echo "some of this will not make sense at first" | valgrind --leak-check=full ./../ft_ssl md5 file > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
+	echo "some of this will not make sense at first" | valgrind --leak-check=full ./../ft_ssl md5 file > logs/trace_valgrind_$TEST_NAME 2>&1
 	echo "some of this will not make sense at first" | ./../ft_ssl md5 file > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
@@ -334,7 +334,7 @@
 	echo "...... $TEST_LABEL"
 
 	# Run program
-	echo "but eventually you will understand" | valgrind --leak-check=full ./../ft_ssl md5 -p -r file > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
+	echo "but eventually you will understand" | valgrind --leak-check=full ./../ft_ssl md5 -p -r file > logs/trace_valgrind_$TEST_NAME 2>&1
 	echo "but eventually you will understand" | ./../ft_ssl md5 -p -r file > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
@@ -379,7 +379,7 @@
 	echo "...... $TEST_LABEL"
 
 	# Run program
-	echo "GL HF let's go" | valgrind --leak-check=full ./../ft_ssl md5 -p -s "foo" file > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
+	echo "GL HF let's go" | valgrind --leak-check=full ./../ft_ssl md5 -p -s "foo" file > logs/trace_valgrind_$TEST_NAME 2>&1
 	echo "GL HF let's go" | ./../ft_ssl md5 -p -s "foo" file > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
@@ -427,7 +427,7 @@
 	echo "...... $TEST_LABEL"
 
 	# Run program
-	echo "one more thing" | valgrind --leak-check=full ./../ft_ssl md5 -r -p -s "foo" file -s "bar" > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
+	echo "one more thing" | valgrind --leak-check=full ./../ft_ssl md5 -r -p -s "foo" file -s "bar" > logs/trace_valgrind_$TEST_NAME 2>&1
 	echo "one more thing" | ./../ft_ssl md5 -r -p -s "foo" file -s "bar" > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
@@ -481,7 +481,7 @@
 	echo "...... $TEST_LABEL"
 
 	# Run program
-	echo "just to be extra clear" | valgrind --leak-check=full ./../ft_ssl md5 -r -q -p -s "foo" file > logs/trace_valgrind_$TEST_NAME_$TEST_NAME 2>&1
+	echo "just to be extra clear" | valgrind --leak-check=full ./../ft_ssl md5 -r -q -p -s "foo" file > logs/trace_valgrind_$TEST_NAME 2>&1
 	echo "just to be extra clear" | ./../ft_ssl md5 -r -q -p -s "foo" file > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
