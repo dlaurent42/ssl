@@ -29,15 +29,19 @@ echo "Running subject tests..."
 ./unit.subject.tests.sh
 echo ""
 
-# RUNNING ERRORS TESTS
+# RUNNING MD5 TESTS
 echo "Running tests on md5..."
 ./unit.md5.tests.sh
 echo ""
 
-# RUNNING ERRORS TESTS
+# RUNNING SHA256 TESTS
 echo "Running tests on sha256..."
 ./unit.sha256.tests.sh
+echo ""
 
 # Cleaning env
+echo "Cleaning environment"
 chmod 777 "resources/permissions" > /dev/null
 rm "resources/permissions" > /dev/null
+
+echo "End of tests"
