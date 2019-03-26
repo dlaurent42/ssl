@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/25 14:15:38 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/25 14:45:42 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/26 14:44:35 by azaliaus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void		sha256_order_arr(t_sha256 **sha256, int i)
 {
 	if (!((*sha256)->w = (uint32_t *)ft_memalloc(512)))
 		return ;
-	ft_memcpy((*sha256)->w, &((*sha256)->hash32[i * 16]), 16 * 32);
+	ft_memcpy((*sha256)->w, &((*sha256)->hash32[i * 16]), 512);
 	sha256_rotate(sha256);
 	(*sha256)->a = (*sha256)->status[0];
 	(*sha256)->b = (*sha256)->status[1];
