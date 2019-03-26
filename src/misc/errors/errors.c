@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:05:00 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/26 10:59:11 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/26 11:36:38 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void		err_handler(unsigned char errcode, t_ssl *ssl)
 		ft_putstr_fd("Cipher commands:\n", 2);
 	}
 	else if (errcode == ERRCODE_SSL_MISSING_ARG)
-		ft_putendl_fd("md5: option requires an argument -- s", 2);
+		ft_putendl_fd("ft_ssl: md5: option requires an argument -- s", 2);
 	else
 		ft_putendl_fd("An error occured.", 2);
 	free_ssl(ssl);
