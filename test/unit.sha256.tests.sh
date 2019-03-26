@@ -12,7 +12,7 @@
 	# Run program
 	touch _sha256testfile
 	echo -n "" | valgrind --leak-check=full ./../ft_ssl sha256 > logs/trace_valgrind_$TEST_NAME 2>&1
-	echo -n "" | ./../ft_ssl sha256 > logs/trace_$TEST_NAME 2>&1
+	cat logs/trace_valgrind_$TEST_NAME | grep -v "==" > logs/trace_$TEST_NAME 2>&1
 	openssl sha -sha256 _sha256testfile | cut -d' ' -f2 > logs/trace_original_$TEST_NAME 2>&1
 
 	# Check leaks
@@ -53,7 +53,7 @@
 	# Run program
 	echo -n "Foo bar" > _sha256testfile
 	echo -n "Foo bar" | valgrind --leak-check=full ./../ft_ssl sha256 > logs/trace_valgrind_$TEST_NAME 2>&1
-	echo -n "Foo bar" | ./../ft_ssl sha256 > logs/trace_$TEST_NAME 2>&1
+	cat logs/trace_valgrind_$TEST_NAME | grep -v "==" > logs/trace_$TEST_NAME 2>&1
 	openssl sha -sha256 _sha256testfile | cut -d' ' -f2 > logs/trace_original_$TEST_NAME 2>&1
 
 	# Check leaks
@@ -94,7 +94,7 @@
 	# Run program
 	echo -n "你吃饭了吗？ Nǐ chīfàn le ma? Literally: Have you eaten?" > _sha256testfile
 	echo -n "你吃饭了吗？ Nǐ chīfàn le ma? Literally: Have you eaten?" | valgrind --leak-check=full ./../ft_ssl sha256 > logs/trace_valgrind_$TEST_NAME 2>&1
-	echo -n "你吃饭了吗？ Nǐ chīfàn le ma? Literally: Have you eaten?" | ./../ft_ssl sha256 > logs/trace_$TEST_NAME 2>&1
+	cat logs/trace_valgrind_$TEST_NAME | grep -v "==" > logs/trace_$TEST_NAME 2>&1
 	openssl sha -sha256 _sha256testfile | cut -d' ' -f2 > logs/trace_original_$TEST_NAME 2>&1
 
 	# Check leaks
@@ -134,7 +134,7 @@
 
 	# Run program
 	cat resources/binary_file | valgrind --leak-check=full ./../ft_ssl sha256  > logs/trace_valgrind_$TEST_NAME 2>&1
-	cat resources/binary_file | ./../ft_ssl sha256  > logs/trace_$TEST_NAME 2>&1
+	cat logs/trace_valgrind_$TEST_NAME | grep -v "==" > logs/trace_$TEST_NAME 2>&1
 	openssl sha -sha256 resources/binary_file  | cut -d' ' -f2 > logs/trace_original_$TEST_NAME 2>&1
 
 	# Check leaks
@@ -174,7 +174,7 @@
 
 	# Run program
 	cat resources/empty_file | valgrind --leak-check=full ./../ft_ssl sha256  > logs/trace_valgrind_$TEST_NAME 2>&1
-	cat resources/empty_file | ./../ft_ssl sha256  > logs/trace_$TEST_NAME 2>&1
+	cat logs/trace_valgrind_$TEST_NAME | grep -v "==" > logs/trace_$TEST_NAME 2>&1
 	openssl sha -sha256 resources/empty_file  | cut -d' ' -f2 > logs/trace_original_$TEST_NAME 2>&1
 
 	# Check leaks
@@ -214,7 +214,7 @@
 
 	# Run program
 	cat  resources/text_file_small | valgrind --leak-check=full ./../ft_ssl sha256  > logs/trace_valgrind_$TEST_NAME 2>&1
-	cat  resources/text_file_small | ./../ft_ssl sha256  > logs/trace_$TEST_NAME 2>&1
+	cat logs/trace_valgrind_$TEST_NAME | grep -v "==" > logs/trace_$TEST_NAME 2>&1
 	openssl sha -sha256 resources/text_file_small  | cut -d' ' -f2 > logs/trace_original_$TEST_NAME 2>&1
 
 	# Check leaks
@@ -254,7 +254,7 @@
 
 	# Run program
 	cat  resources/text_file_medium | valgrind --leak-check=full ./../ft_ssl sha256  > logs/trace_valgrind_$TEST_NAME 2>&1
-	cat  resources/text_file_medium | ./../ft_ssl sha256  > logs/trace_$TEST_NAME 2>&1
+	cat logs/trace_valgrind_$TEST_NAME | grep -v "==" > logs/trace_$TEST_NAME 2>&1
 	openssl sha -sha256 resources/text_file_medium  | cut -d' ' -f2 > logs/trace_original_$TEST_NAME 2>&1
 
 	# Check leaks
@@ -293,8 +293,8 @@
 	echo "...... $TEST_LABEL"
 
 	# Run program
-	cat resources/text_file_large | valgrind --leak-check=full ./../ft_ssl sha256  > logs/trace_valgrind_$TEST_NAME 2>&1
-	cat resources/text_file_large | ./../ft_ssl sha256  > logs/trace_$TEST_NAME 2>&1
+	cat resources/text_file_large | valgrind --leak-check=full ./../ft_ssl sha256 > logs/trace_valgrind_$TEST_NAME 2>&1
+	cat logs/trace_valgrind_$TEST_NAME | grep -v "==" > logs/trace_$TEST_NAME 2>&1
 	openssl sha -sha256 resources/text_file_large  | cut -d' ' -f2 > logs/trace_original_$TEST_NAME 2>&1
 
 	# Check leaks
