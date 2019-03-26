@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 17:27:33 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/25 13:19:00 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/26 11:00:52 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,26 @@ static void	parse_files(t_ssl **ssl)
 
 static void	parse_argument(unsigned char *opt_possible, t_ssl **ssl, char *av)
 {
-	if (*opt_possible && ft_strcmps(av, "-p") == 0)
+	if (*opt_possible == OPT_POSSIBLE && ft_strcmps(av, "-p") == 0)
 		(*ssl)->options->p = TRUE;
-	else if (*opt_possible && ft_strcmps(av, "-q") == 0)
+	else if (*opt_possible == OPT_POSSIBLE && ft_strcmps(av, "-q") == 0)
 		(*ssl)->options->q = TRUE;
-	else if (*opt_possible && ft_strcmps(av, "-r") == 0)
+	else if (*opt_possible == OPT_POSSIBLE && ft_strcmps(av, "-r") == 0)
 		(*ssl)->options->r = TRUE;
-	else if (*opt_possible && ft_strcmps(av, "-s") == 0)
+	else if (*opt_possible == OPT_POSSIBLE && ft_strcmps(av, "-s") == 0)
+	{
+		*opt_possible = LAST_OPT_IS_S;
 		(*ssl)->options->s = TRUE;
+	}
 	else
-		(*opt_possible && (*ssl)->options->s && !(*opt_possible = FALSE))
+	{
+		(*opt_possible == LAST_OPT_IS_S && (*ssl)->options->s)
 			? declare_new_argument(ssl, av, ARG_TYPE_STRING, ft_strlens(av))
 			: declare_new_argument(ssl, av, ARG_TYPE_FILE, 0);
+		*opt_possible = (*opt_possible == LAST_OPT_IS_S)
+			? OPT_POSSIBLE
+			: OPT_NOT_POSSIBLE;
+	}
 }
 
 void		parse_arguments(t_ssl **ssl, char **av)
@@ -59,7 +67,7 @@ void		parse_arguments(t_ssl **ssl, char **av)
 	unsigned char	opt_possible;
 
 	i = 0;
-	opt_possible = TRUE;
+	opt_possible = OPT_POSSIBLE;
 	if (!ssl || !*ssl)
 		return ;
 	read_from_stdin(ssl);
@@ -70,5 +78,7 @@ void		parse_arguments(t_ssl **ssl, char **av)
 			parse_argument(&opt_possible, ssl, av[i]);
 	if (i == 1)
 		err_handler(ERRCODE_SSL_NO_ARG, *ssl);
+	if (opt_possible == LAST_OPT_IS_S)
+		err_handler(ERRCODE_SSL_MISSING_ARG, *ssl);
 	parse_files(ssl);
 }

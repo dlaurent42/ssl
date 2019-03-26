@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:01:48 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/25 14:48:26 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/26 10:59:18 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define ERRCODE_MALLOC_FAILED		-1
 # define ERRCODE_SSL_NO_ARG			1
 # define ERRCODE_SSL_INVALID_CMD	2
+# define ERRCODE_SSL_MISSING_ARG	3
 
 /*
 ** argument's types
@@ -28,6 +29,13 @@
 # define ARG_TYPE_STDIN				0
 # define ARG_TYPE_FILE				1
 # define ARG_TYPE_STRING			2
+
+/*
+** option still possible
+*/
+# define OPT_NOT_POSSIBLE			0
+# define OPT_POSSIBLE				1
+# define LAST_OPT_IS_S				2
 
 /*
 ** global variables
