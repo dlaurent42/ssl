@@ -44,6 +44,11 @@ echo "Running tests on sha256..."
 ./unit.sha256.tests.sh
 echo ""
 
+# RUNNING SHA512 TESTS
+echo "Running tests on sha512..."
+./unit.sha512.tests.sh
+echo ""
+
 # Cleaning env
 echo "Cleaning environment"
 chmod 777 "resources/permissions" > /dev/null
