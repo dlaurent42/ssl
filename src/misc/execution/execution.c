@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 11:30:25 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/28 18:42:30 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/29 00:26:16 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void		execute_from_stdin(t_ssl **ssl)
 		(*ssl)->output = convert_sha224((*ssl)->input, (*ssl)->input_size);
 	else if (!(*ssl)->error && ft_strcmps((*ssl)->hash_type, "sha256") == 0)
 		(*ssl)->output = convert_sha256((*ssl)->input, (*ssl)->input_size);
+	else if (!(*ssl)->error && ft_strcmps((*ssl)->hash_type, "sha384") == 0)
+		(*ssl)->output = convert_sha384((*ssl)->input, (*ssl)->input_size);
 	else if (!(*ssl)->error && ft_strcmps((*ssl)->hash_type, "sha512") == 0)
 		(*ssl)->output = convert_sha512((*ssl)->input, (*ssl)->input_size);
 	(*ssl)->from_stdin = TRUE;
@@ -37,6 +39,8 @@ void		execute_from_file(t_ssl **ssl, char *filename)
 		(*ssl)->output = convert_sha224((*ssl)->input, (*ssl)->input_size);
 	else if (!(*ssl)->error && ft_strcmps((*ssl)->hash_type, "sha256") == 0)
 		(*ssl)->output = convert_sha256((*ssl)->input, (*ssl)->input_size);
+	else if (!(*ssl)->error && ft_strcmps((*ssl)->hash_type, "sha384") == 0)
+		(*ssl)->output = convert_sha384((*ssl)->input, (*ssl)->input_size);
 	else if (!(*ssl)->error && ft_strcmps((*ssl)->hash_type, "sha512") == 0)
 		(*ssl)->output = convert_sha512((*ssl)->input, (*ssl)->input_size);
 	(*ssl)->from_file = TRUE;
@@ -57,6 +61,8 @@ void		execute_from_string(t_ssl **ssl, char *s)
 		(*ssl)->output = convert_sha224((*ssl)->input, (*ssl)->input_size);
 	else if (ft_strcmps((*ssl)->hash_type, "sha256") == 0)
 		(*ssl)->output = convert_sha256((*ssl)->input, (*ssl)->input_size);
+	else if (ft_strcmps((*ssl)->hash_type, "sha384") == 0)
+		(*ssl)->output = convert_sha384((*ssl)->input, (*ssl)->input_size);
 	else if (ft_strcmps((*ssl)->hash_type, "sha512") == 0)
 		(*ssl)->output = convert_sha512((*ssl)->input, (*ssl)->input_size);
 	(*ssl)->from_string = TRUE;
@@ -74,6 +80,8 @@ void		execute_from_nothing(t_ssl **ssl)
 		(*ssl)->output = convert_sha224((*ssl)->input, (*ssl)->input_size);
 	else if (ft_strcmps((*ssl)->hash_type, "sha256") == 0)
 		(*ssl)->output = convert_sha256((*ssl)->input, (*ssl)->input_size);
+	else if (ft_strcmps((*ssl)->hash_type, "sha384") == 0)
+		(*ssl)->output = convert_sha384((*ssl)->input, (*ssl)->input_size);
 	else if (ft_strcmps((*ssl)->hash_type, "sha512") == 0)
 		(*ssl)->output = convert_sha512((*ssl)->input, (*ssl)->input_size);
 	(*ssl)->from_stdin = TRUE;
@@ -93,6 +101,7 @@ void		execute_hash(t_ssl **ssl, char **av)
 	if (!(ft_strcmps(av[i], "md5") == 0
 	|| ft_strcmps(av[i], "sha224") == 0
 	|| ft_strcmps(av[i], "sha256") == 0
+	|| ft_strcmps(av[i], "sha384") == 0
 	|| ft_strcmps(av[i], "sha512") == 0))
 		err_handler(ERRCODE_SSL_INVALID_CMD, *ssl);
 	if (!av[++i])

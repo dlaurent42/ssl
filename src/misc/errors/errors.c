@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:05:00 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/28 18:41:21 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/29 00:25:02 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void		err_handler(unsigned char errcode, t_ssl *ssl)
 		ft_putstr_fd("md5\n", 2);
 		ft_putstr_fd("sha224\n", 2);
 		ft_putstr_fd("sha256\n", 2);
+		ft_putstr_fd("sha384\n", 2);
 		ft_putstr_fd("sha512\n\n", 2);
 		ft_putstr_fd("Cipher commands:\n", 2);
 	}

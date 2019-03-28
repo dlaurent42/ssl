@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:01:49 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/28 22:39:41 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/29 00:22:41 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,20 @@ t_sha256			*initialize_sha256_structure(char *input, size_t size);
 void				destroy_sha256_structure(t_sha256 *sha256);
 void				process_sha256(t_sha256 **sha256);
 char				*prepare_sha256_padded_message(
+						char *msg,
+						uint64_t len,
+						uint64_t plen);
+
+/*
+********************************    SHA384    **********************************
+**			  It contains all prototypes relative to sha384 hash
+*/
+char				*convert_sha384(char *input, size_t size);
+t_sha384			*initialize_sha384_structure(char *input, size_t size);
+void				destroy_sha384_structure(t_sha384 *sha384);
+void				process_sha384(t_sha384 **sha384);
+void				sha384_char_to_uint64(t_sha384 **sha384, uint64_t i, int j);
+char				*prepare_sha384_padded_message(
 						char *msg,
 						uint64_t len,
 						uint64_t plen);

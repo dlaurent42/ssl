@@ -45,6 +45,11 @@ echo "Running tests on sha256..."
 echo ""
 
 # RUNNING SHA512 TESTS
+echo "Running tests on sha384..."
+./unit.sha384.tests.sh
+echo ""
+
+# RUNNING SHA512 TESTS
 echo "Running tests on sha512..."
 ./unit.sha512.tests.sh
 echo ""

@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 17:30:48 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/28 18:41:36 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/29 00:25:14 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static char	*get_hash(char *hash)
 		return ("SHA224");
 	if (ft_strcmps(hash, "sha256") == 0)
 		return ("SHA256");
+	if (ft_strcmps(hash, "sha384") == 0)
+		return ("SHA384");
 	if (ft_strcmps(hash, "sha512") == 0)
 		return ("SHA512");
 	return ("UNKNOWN");
