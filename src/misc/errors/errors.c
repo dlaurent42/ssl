@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:05:00 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/27 17:16:29 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/28 17:52:41 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void		err_handler(unsigned char errcode, t_ssl *ssl)
 		ft_putstr_fd("Standard commands:\n\n", 2);
 		ft_putstr_fd("Message Digest commands:\n", 2);
 		ft_putstr_fd("md5\n", 2);
+		ft_putstr_fd("sha224\n", 2);
 		ft_putstr_fd("sha256\n\n", 2);
 		ft_putstr_fd("Cipher commands:\n", 2);
 	}

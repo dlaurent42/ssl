@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:01:49 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/28 17:28:30 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/28 17:51:23 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,19 @@ char				*prepare_md5_padded_message(
 						char *message,
 						unsigned long long len,
 						unsigned long long padded_len);
+
+/*
+********************************    SHA224    **********************************
+**			  It contains all prototypes relative to sha224 hash
+*/
+char				*convert_sha224(char *input, size_t size);
+t_sha224			*initialize_sha224_structure(char *input, size_t size);
+void				destroy_sha224_structure(t_sha224 *sha224);
+void				process_sha224(t_sha224 **sha224);
+char				*prepare_sha224_padded_message(
+						char *message,
+						unsigned long long len,
+						unsigned long long offset);
 
 /*
 ********************************    SHA256    **********************************

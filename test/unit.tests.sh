@@ -34,6 +34,11 @@ echo "Running tests on md5..."
 ./unit.md5.tests.sh
 echo ""
 
+# RUNNING SHA224 TESTS
+echo "Running tests on sha256..."
+./unit.sha224.tests.sh
+echo ""
+
 # RUNNING SHA256 TESTS
 echo "Running tests on sha256..."
 ./unit.sha256.tests.sh
