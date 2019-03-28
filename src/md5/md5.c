@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:04:37 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/25 17:00:28 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/28 18:54:37 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ static char	*convert_output(t_md5 *md5)
 	char	*output;
 
 	output = ft_strdupf(prepend_zeros_to_hex(
-		ulltoa_base("0123456789abcdef", reverse_bits(md5->h0))));
+		ulltoa_base("0123456789abcdef", reverse_bits(md5->h0)), 8));
 	output = ft_strjoinf(output, prepend_zeros_to_hex(
-		ulltoa_base("0123456789abcdef", reverse_bits(md5->h1))), 3);
+		ulltoa_base("0123456789abcdef", reverse_bits(md5->h1)), 8), 3);
 	output = ft_strjoinf(output, prepend_zeros_to_hex(
-		ulltoa_base("0123456789abcdef", reverse_bits(md5->h2))), 3);
+		ulltoa_base("0123456789abcdef", reverse_bits(md5->h2)), 8), 3);
 	output = ft_strjoinf(output, prepend_zeros_to_hex(
-		ulltoa_base("0123456789abcdef", reverse_bits(md5->h3))), 3);
+		ulltoa_base("0123456789abcdef", reverse_bits(md5->h3)), 8), 3);
 	return (output);
 }
 

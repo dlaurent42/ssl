@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:04:32 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/25 14:43:30 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/28 18:54:54 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static char	*convert_output(t_sha256 *sha256)
 	{
 		output = ft_strjoinf(output,
 			prepend_zeros_to_hex(
-				ulltoa_base("0123456789abcdef", sha256->status[i])),
+				ulltoa_base("0123456789abcdef", sha256->status[i]), 8),
 			3);
 		i++;
 	}

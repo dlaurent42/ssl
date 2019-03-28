@@ -19,6 +19,10 @@ SRC			=	ssl.c														\
 				sha256/memory.c												\
 				sha256/padding.c											\
 				sha256/process.c											\
+				sha512/sha512.c												\
+				sha512/memory.c												\
+				sha512/padding.c											\
+				sha512/process.c											\
 				misc/errors/errors.c										\
 				misc/execution/display.c									\
 				misc/execution/execution.c									\
@@ -63,6 +67,7 @@ $(OBJ_DIR):
 				@mkdir -p $(OBJ_DIR)/md5
 				@mkdir -p $(OBJ_DIR)/sha224
 				@mkdir -p $(OBJ_DIR)/sha256
+				@mkdir -p $(OBJ_DIR)/sha512
 				@mkdir -p $(OBJ_DIR)/misc
 				@mkdir -p $(OBJ_DIR)/misc/errors
 				@mkdir -p $(OBJ_DIR)/misc/execution
