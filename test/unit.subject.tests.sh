@@ -11,7 +11,7 @@
 
 	# Run program
 	echo "pickle rick" | valgrind --leak-check=full ./../ft_ssl md5 > logs/trace_valgrind_$TEST_NAME 2>&1
-	cat logs/trace_valgrind_$TEST_NAME | grep -v "==" > logs/trace_$TEST_NAME 2>&1
+	cat logs/trace_valgrind_$TEST_NAME | grep -v "==" | grep -v "\-\- run:" > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
 	if ! grep -q "definitely lost: 0 bytes in 0 blocks" "logs/trace_valgrind_$TEST_NAME"; then
@@ -50,7 +50,7 @@
 
 	# Run program
 	echo "Do not pity the dead, Harry." | valgrind --leak-check=full ./../ft_ssl md5 -p > logs/trace_valgrind_$TEST_NAME 2>&1
-	cat logs/trace_valgrind_$TEST_NAME | grep -v "==" > logs/trace_$TEST_NAME 2>&1
+	cat logs/trace_valgrind_$TEST_NAME | grep -v "==" | grep -v "\-\- run:" > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
 	if ! grep -q "definitely lost: 0 bytes in 0 blocks" "logs/trace_valgrind_$TEST_NAME"; then
@@ -92,7 +92,7 @@
 
 	# Run program
 	echo "Pity the living." | valgrind --leak-check=full ./../ft_ssl md5 -q -r > logs/trace_valgrind_$TEST_NAME 2>&1
-	cat logs/trace_valgrind_$TEST_NAME | grep -v "==" > logs/trace_$TEST_NAME 2>&1
+	cat logs/trace_valgrind_$TEST_NAME | grep -v "==" | grep -v "\-\- run:" > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
 	if ! grep -q "definitely lost: 0 bytes in 0 blocks" "logs/trace_valgrind_$TEST_NAME"; then
@@ -134,7 +134,7 @@
 
 	# Run program
 	valgrind --leak-check=full ./../ft_ssl md5 file > logs/trace_valgrind_$TEST_NAME 2>&1
-	cat logs/trace_valgrind_$TEST_NAME | grep -v "==" > logs/trace_$TEST_NAME 2>&1
+	cat logs/trace_valgrind_$TEST_NAME | grep -v "==" | grep -v "\-\- run:" > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
 	if ! grep -q "definitely lost: 0 bytes in 0 blocks" "logs/trace_valgrind_$TEST_NAME"; then
@@ -173,7 +173,7 @@
 
 	# Run program
 	valgrind --leak-check=full ./../ft_ssl md5 -r file > logs/trace_valgrind_$TEST_NAME 2>&1
-	cat logs/trace_valgrind_$TEST_NAME | grep -v "==" > logs/trace_$TEST_NAME 2>&1
+	cat logs/trace_valgrind_$TEST_NAME | grep -v "==" | grep -v "\-\- run:" > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
 	if ! grep -q "definitely lost: 0 bytes in 0 blocks" "logs/trace_valgrind_$TEST_NAME"; then
@@ -212,7 +212,7 @@
 
 	# Run program
 	valgrind --leak-check=full ./../ft_ssl md5 -s "pity those that aren't following baerista on spotify." > logs/trace_valgrind_$TEST_NAME 2>&1
-	cat logs/trace_valgrind_$TEST_NAME | grep -v "==" > logs/trace_$TEST_NAME 2>&1
+	cat logs/trace_valgrind_$TEST_NAME | grep -v "==" | grep -v "\-\- run:" > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
 	if ! grep -q "definitely lost: 0 bytes in 0 blocks" "logs/trace_valgrind_$TEST_NAME"; then
@@ -251,7 +251,7 @@
 
 	# Run program
 	echo "be sure to handle edge cases carefully" | valgrind --leak-check=full ./../ft_ssl md5 -p file > logs/trace_valgrind_$TEST_NAME 2>&1
-	cat logs/trace_valgrind_$TEST_NAME | grep -v "==" > logs/trace_$TEST_NAME 2>&1
+	cat logs/trace_valgrind_$TEST_NAME | grep -v "==" | grep -v "\-\- run:" > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
 	if ! grep -q "definitely lost: 0 bytes in 0 blocks" "logs/trace_valgrind_$TEST_NAME"; then
@@ -296,7 +296,7 @@
 
 	# Run program
 	echo "some of this will not make sense at first" | valgrind --leak-check=full ./../ft_ssl md5 file > logs/trace_valgrind_$TEST_NAME 2>&1
-	cat logs/trace_valgrind_$TEST_NAME | grep -v "==" > logs/trace_$TEST_NAME 2>&1
+	cat logs/trace_valgrind_$TEST_NAME | grep -v "==" | grep -v "\-\- run:" > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
 	if ! grep -q "definitely lost: 0 bytes in 0 blocks" "logs/trace_valgrind_$TEST_NAME"; then
@@ -335,7 +335,7 @@
 
 	# Run program
 	echo "but eventually you will understand" | valgrind --leak-check=full ./../ft_ssl md5 -p -r file > logs/trace_valgrind_$TEST_NAME 2>&1
-	cat logs/trace_valgrind_$TEST_NAME | grep -v "==" > logs/trace_$TEST_NAME 2>&1
+	cat logs/trace_valgrind_$TEST_NAME | grep -v "==" | grep -v "\-\- run:" > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
 	if ! grep -q "definitely lost: 0 bytes in 0 blocks" "logs/trace_valgrind_$TEST_NAME"; then
@@ -380,7 +380,7 @@
 
 	# Run program
 	echo "GL HF let's go" | valgrind --leak-check=full ./../ft_ssl md5 -p -s "foo" file > logs/trace_valgrind_$TEST_NAME 2>&1
-	cat logs/trace_valgrind_$TEST_NAME | grep -v "==" > logs/trace_$TEST_NAME 2>&1
+	cat logs/trace_valgrind_$TEST_NAME | grep -v "==" | grep -v "\-\- run:" > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
 	if ! grep -q "definitely lost: 0 bytes in 0 blocks" "logs/trace_valgrind_$TEST_NAME"; then
@@ -428,7 +428,7 @@
 
 	# Run program
 	echo "one more thing" | valgrind --leak-check=full ./../ft_ssl md5 -r -p -s "foo" file -s "bar" > logs/trace_valgrind_$TEST_NAME 2>&1
-	cat logs/trace_valgrind_$TEST_NAME | grep -v "==" > logs/trace_$TEST_NAME 2>&1
+	cat logs/trace_valgrind_$TEST_NAME | grep -v "==" | grep -v "\-\- run:" > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
 	if ! grep -q "definitely lost: 0 bytes in 0 blocks" "logs/trace_valgrind_$TEST_NAME"; then
@@ -464,10 +464,10 @@
 	if ! grep -q "53d53ea94217b259c11a5a2d104ec58a file" "logs/trace_$TEST_NAME"; then
 		echo ".......... Unexpected output"
 	fi
-	if ! grep -q "ft_ssl: md5: -s: No such file or directory" "logs/trace_$TEST_NAME"; then
+	if ! grep -q "ft_ssl: md5: -s: No such file or directory." "logs/trace_$TEST_NAME"; then
 		echo ".......... Unexpected output"
 	fi
-	if ! grep -q "ft_ssl: md5: bar: No such file or directory" "logs/trace_$TEST_NAME"; then
+	if ! grep -q "ft_ssl: md5: bar: No such file or directory." "logs/trace_$TEST_NAME"; then
 		echo ".......... Unexpected output"
 	fi
 
@@ -482,7 +482,7 @@
 
 	# Run program
 	echo "just to be extra clear" | valgrind --leak-check=full ./../ft_ssl md5 -r -q -p -s "foo" file > logs/trace_valgrind_$TEST_NAME 2>&1
-	cat logs/trace_valgrind_$TEST_NAME | grep -v "==" > logs/trace_$TEST_NAME 2>&1
+	cat logs/trace_valgrind_$TEST_NAME | grep -v "==" | grep -v "\-\- run:" > logs/trace_$TEST_NAME 2>&1
 
 	# Check leaks
 	if ! grep -q "definitely lost: 0 bytes in 0 blocks" "logs/trace_valgrind_$TEST_NAME"; then

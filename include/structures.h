@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:01:50 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/27 18:58:46 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/28 12:01:14 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,13 @@ typedef struct				s_ssl
 	size_t					input_size;
 	int						error;
 	unsigned char			is_executed		:1;
+	unsigned char			return_status	:1;
 	unsigned char			option_r		:1;
 	unsigned char			option_q		:1;
 	unsigned char			option_p		:1;
-	unsigned char			empty			:4;
+	unsigned char			from_file		:1;
+	unsigned char			from_stdin		:1;
+	unsigned char			from_string		:1;
 }							t_ssl;
 
 #endif

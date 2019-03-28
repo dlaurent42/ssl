@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   malloc_ssl.c                                       :+:      :+:    :+:   */
+/*   stdin_input_available.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/14 17:07:38 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/27 17:06:39 by dlaurent         ###   ########.fr       */
+/*   Created: 2019/03/28 13:25:27 by dlaurent          #+#    #+#             */
+/*   Updated: 2019/03/28 13:25:30 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ssl.h"
 
-void	reset_ssl_structure(t_ssl **ssl)
+bool	stdin_input_available(void)
 {
-	if ((*ssl)->input)
-		ft_strdel(&(*ssl)->input);
-	if ((*ssl)->output)
-		ft_strdel(&(*ssl)->output);
-	(*ssl)->option_p = FALSE;
-	(*ssl)->option_q = FALSE;
-	(*ssl)->option_r = FALSE;
-}
+	fd_set			fds;
+	struct timeval	tv;
 
-t_ssl	*declare_empty_ssl_structure(void)
-{
-	t_ssl	*ssl;
-
-	ssl = NULL;
-	if (!(ssl = (t_ssl *)ft_memalloc(sizeof(t_ssl))))
-		err_handler(ERRCODE_MALLOC_FAILED, NULL);
-	return (ssl);
+	tv.tv_sec = 0;
+	tv.tv_usec = 0;
+	FD_ZERO(&fds);
+	FD_SET(STDIN_FILENO, &fds);
+	select(STDIN_FILENO + 1, &fds, NULL, NULL, &tv);
+	return (FD_ISSET(0, &fds));
 }

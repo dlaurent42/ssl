@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strlenu.c                                          :+:      :+:    :+:   */
+/*   malloc.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/20 13:38:15 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/20 13:38:40 by dlaurent         ###   ########.fr       */
+/*   Created: 2019/03/14 17:07:38 by dlaurent          #+#    #+#             */
+/*   Updated: 2019/03/28 12:02:39 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned long long	strlenu(const char *message)
-{
-	int					i;
-	unsigned long long	len;
+#include "ssl.h"
 
-	i = 0;
-	len = 0;
-	if (!message)
-		return (len);
-	while (message[i])
-	{
-		if ((unsigned char)message[i] < 0b10000000
-		|| (unsigned char)message[i] >= 0b11000000)
-			len++;
-		i++;
-	}
-	return (len);
+t_ssl	*declare_empty_ssl_structure(void)
+{
+	t_ssl	*ssl;
+
+	ssl = NULL;
+	if (!(ssl = (t_ssl *)ft_memalloc(sizeof(t_ssl))))
+		err_handler(ERRCODE_MALLOC_FAILED, NULL);
+	return (ssl);
 }

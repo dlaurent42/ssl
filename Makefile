@@ -15,20 +15,20 @@ SRC			=	ssl.c														\
 				sha256/memory.c												\
 				sha256/padding.c											\
 				sha256/process.c											\
-				misc/dispatcher/dispatcher.c								\
-				misc/display/display.c										\
 				misc/errors/errors.c										\
+				misc/execution/display.c									\
+				misc/execution/execution.c									\
+				misc/execution/parser.c										\
+				misc/execution/read_file.c									\
+				misc/execution/read_stdin.c									\
 				misc/memory/free.c											\
-				misc/memory/malloc_arg.c									\
-				misc/memory/malloc_ssl.c									\
-				misc/parser/parser.c										\
-				misc/parser/read_file.c										\
-				misc/parser/read_stdin.c									\
+				misc/memory/malloc.c										\
+				misc/memory/reset.c											\
 				misc/utils/hex_prepend_zeros.c								\
 				misc/utils/print_memory.c									\
 				misc/utils/reverse_bits.c									\
 				misc/utils/rotate.c											\
-				misc/utils/strlenu.c										\
+				misc/utils/stdin_input_available.c							\
 				misc/utils/strnjoinsf1.c
 
 SRCS		=	$(addprefix $(SRC_DIR), $(SRC_ALL))
@@ -59,11 +59,9 @@ $(OBJ_DIR):
 				@mkdir -p $(OBJ_DIR)/md5
 				@mkdir -p $(OBJ_DIR)/sha256
 				@mkdir -p $(OBJ_DIR)/misc
-				@mkdir -p $(OBJ_DIR)/misc/dispatcher
-				@mkdir -p $(OBJ_DIR)/misc/display
 				@mkdir -p $(OBJ_DIR)/misc/errors
+				@mkdir -p $(OBJ_DIR)/misc/execution
 				@mkdir -p $(OBJ_DIR)/misc/memory
-				@mkdir -p $(OBJ_DIR)/misc/parser
 				@mkdir -p $(OBJ_DIR)/misc/utils
 
 clean:

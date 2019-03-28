@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:01:49 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/25 14:46:48 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/28 13:30:30 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,17 @@ uint32_t			*prepare_sha256_padded_message(
 */
 
 /*
-**	DISPATCHER:	dispatch the program following hash asked by user
+**	EXECUTION:	handles execution loop
 */
-void				dispatcher(t_ssl **ssl);
-
-/*
-**	DISPLAY:	handles output of the program in case of successful execution
-*/
-int					display(t_ssl *ssl);
+void				display(t_ssl **ssl, char *filename);
+void				execute_hash(t_ssl **ssl, char **av);
+void				execute_next_argument(t_ssl **ssl, int *i, char **av);
+void				execute_from_string(t_ssl **ssl, char *s);
+void				execute_from_file(t_ssl **ssl, char *filename);
+void				execute_from_stdin(t_ssl **ssl);
+void				execute_from_nothing(t_ssl **ssl);
+void				read_from_file(t_ssl **ssl, char *filename);
+void				read_from_stdin(t_ssl **ssl);
 
 /*
 **	ERRORS:		handle every single fatal error in the program
@@ -65,19 +68,8 @@ void				err_handler(unsigned char errcode, t_ssl *ssl);
 **	MEMORY:		cares about memory allocation and free of program's structures
 */
 void				free_ssl(t_ssl *ssl);
-void				declare_new_argument(
-						t_ssl **ssl,
-						char *arg,
-						char type,
-						size_t size);
+void				reset_ssl_structure(t_ssl **ssl);
 t_ssl				*declare_empty_ssl_structure(void);
-
-/*
-**	PARSER:		parse arguments and fill t_ssl structure
-*/
-void				parse_arguments(t_ssl **ssl, char **av);
-void				read_from_file(t_ssl *ssl, t_argument *arg);
-void				read_from_stdin(t_ssl **ssl);
 
 /*
 **	UTILS:		contains all functions common to any hash
@@ -89,5 +81,6 @@ void				print_memory(const char *str, size_t size);
 unsigned long long	strlenu(const char *message);
 char				*strnjoinsf1(char *s1, char *s2, size_t len1, size_t len2);
 char				*prepend_zeros_to_hex(char *str);
+bool				stdin_input_available(void);
 
 #endif
