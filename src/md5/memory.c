@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 15:12:21 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/25 14:32:31 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/28 16:41:20 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void		destroy_md5_structure(t_md5 *md5)
 {
 	if (!md5)
 		return ;
-	ft_strdel(&md5->padded_str);
+	if (md5->padded_str)
+		ft_strdel(&md5->padded_str);
 	free(md5);
 }

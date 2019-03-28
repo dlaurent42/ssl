@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:01:50 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/28 12:01:14 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/28 16:39:29 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ typedef struct				s_sha256
 	uint32_t				f;
 	uint32_t				g;
 	uint32_t				h;
-	unsigned int			len;
-	unsigned int			offset;
-	uint32_t				*hash32;
+	char					*padded_str;
+	uint64_t				initial_length;
+	uint64_t				padded_str_length;
 	uint32_t				*w;
 	uint32_t				tmp;
 	uint32_t				tmp1;

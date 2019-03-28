@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:01:49 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/28 14:58:34 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/28 17:28:30 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char				*convert_sha256(char *input, size_t size);
 t_sha256			*initialize_sha256_structure(char *input, size_t size);
 void				destroy_sha256_structure(t_sha256 *sha256);
 void				process_sha256(t_sha256 **sha256);
-uint32_t			*prepare_sha256_padded_message(
+char				*prepare_sha256_padded_message(
 						char *message,
 						unsigned long long len,
 						unsigned long long offset);
