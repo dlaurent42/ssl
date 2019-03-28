@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/25 14:15:38 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/28 20:04:03 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/29 00:02:38 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,7 @@ static void		sha512_create_schedule_array(t_sha512 **sha512, uint64_t i)
 		return ;
 	while (++j < 16)
 	{
-		(*sha512)->w[j] = (uint64_t)(
-			(uint64_t)((uint64_t)((*sha512)->padded_str[i + 0]) << 56)
-			| (uint64_t)((uint64_t)((*sha512)->padded_str[i + 1]) << 48)
-			| (uint64_t)((uint64_t)((*sha512)->padded_str[i + 2]) << 40)
-			| (uint64_t)((uint64_t)((*sha512)->padded_str[i + 3]) << 32)
-			| (uint64_t)((uint64_t)((*sha512)->padded_str[i + 4]) << 24)
-			| (uint64_t)((uint64_t)((*sha512)->padded_str[i + 5]) << 16)
-			| (uint64_t)((uint64_t)((*sha512)->padded_str[i + 6]) << 8)
-			| (uint64_t)((uint64_t)(*sha512)->padded_str[i + 7]));
+		sha512_char_to_uint64(sha512, i, j);
 		i += 8;
 	}
 	while (j < 80)
@@ -114,7 +106,7 @@ void			process_sha512(t_sha512 **sha512)
 		j = 0;
 		sha512_create_schedule_array(sha512, i);
 		sha512_initialize_working_variables(sha512);
-		while (j < 128)
+		while (j < 80)
 		{
 			sha512_compression_loop(sha512, j);
 			j++;

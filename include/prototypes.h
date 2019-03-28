@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:01:49 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/28 20:01:42 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/28 22:39:41 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ char				*convert_sha512(char *input, size_t size);
 t_sha512			*initialize_sha512_structure(char *input, size_t size);
 void				destroy_sha512_structure(t_sha512 *sha512);
 void				process_sha512(t_sha512 **sha512);
+void				sha512_char_to_uint64(t_sha512 **sha512, uint64_t i, int j);
 char				*prepare_sha512_padded_message(
 						char *msg,
 						uint64_t len,

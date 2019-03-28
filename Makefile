@@ -19,6 +19,7 @@ SRC			=	ssl.c														\
 				sha256/memory.c												\
 				sha256/padding.c											\
 				sha256/process.c											\
+				sha512/char_to_uint64.c										\
 				sha512/sha512.c												\
 				sha512/memory.c												\
 				sha512/padding.c											\
