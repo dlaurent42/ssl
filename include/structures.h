@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:01:50 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/28 17:51:36 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/28 18:02:59 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,6 @@ typedef struct				s_sha224
 	uint64_t				initial_length;
 	uint64_t				padded_str_length;
 	uint32_t				*w;
-	uint32_t				tmp;
-	uint32_t				tmp1;
-	uint32_t				tmp2;
-	uint32_t				tmp3;
-	uint32_t				tmp4;
-	uint32_t				tmp5;
-	uint32_t				tmp6;
 }							t_sha224;
 
 typedef struct				s_sha256
@@ -69,13 +62,6 @@ typedef struct				s_sha256
 	uint64_t				initial_length;
 	uint64_t				padded_str_length;
 	uint32_t				*w;
-	uint32_t				tmp;
-	uint32_t				tmp1;
-	uint32_t				tmp2;
-	uint32_t				tmp3;
-	uint32_t				tmp4;
-	uint32_t				tmp5;
-	uint32_t				tmp6;
 }							t_sha256;
 
 typedef struct				s_ssl
