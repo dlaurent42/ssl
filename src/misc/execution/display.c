@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 17:30:48 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/28 14:44:29 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/28 14:58:58 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	print_error_argument(int error, char *hash_type, char *filename)
 	if (error == EACCES || error == ENOENT || error == EISDIR)
 	{
 		ft_printf("ft_ssl: %s: ", hash_type);
-		write(1, filename, strlenu(filename));
+		write(1, filename, ft_strlens(filename));
 	}
 	if (error == EACCES)
 		ft_putendl(": Permission denied.");
@@ -52,7 +52,7 @@ static void	print_other_valid_argument(t_ssl **ssl, char *filename)
 	if ((*ssl)->option_r && (*ssl)->from_file)
 	{
 		ft_printf("%s ", (*ssl)->output);
-		write(1, filename, strlenu(filename));
+		write(1, filename, ft_strlens(filename));
 		ft_putendl("");
 	}
 	else if ((*ssl)->option_r)
@@ -64,7 +64,7 @@ static void	print_other_valid_argument(t_ssl **ssl, char *filename)
 	else if ((*ssl)->from_file)
 	{
 		ft_printf("%s (", get_hash((*ssl)->hash_type));
-		write(1, filename, strlenu(filename));
+		write(1, filename, ft_strlens(filename));
 		ft_printf(") = %s\n", (*ssl)->output);
 	}
 	else
