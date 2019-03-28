@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:01:50 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/25 14:21:13 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/27 18:58:46 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,42 +54,18 @@ typedef struct				s_sha256
 	uint32_t				tmp6;
 }							t_sha256;
 
-typedef struct				s_argument
-{
-	int						error;
-	char					*hashed_argument;
-	char					*argument;
-	char					*file_content;
-	size_t					content_size;
-	unsigned char			is_file		:1;
-	unsigned char			is_stdin	:1;
-	unsigned char			is_string	:1;
-	unsigned char			empty		:5;
-	struct s_argument		*head;
-	struct s_argument		*next;
-}							t_argument;
-
-/*
-**	OPTIONS
-**		• -p, echo STDIN to STDOUT and append the checksum to STDOUT
-**		• -q, quiet mode
-**		• -r, reverse the format of the output
-**		• -s, print the sum of the given string
-*/
-typedef struct				s_options
-{
-	unsigned char			p		:1;
-	unsigned char			q		:1;
-	unsigned char			r		:1;
-	unsigned char			s		:1;
-	unsigned char			empty	:4;
-}							t_options;
-
 typedef struct				s_ssl
 {
-	char					*hash;
-	t_options				*options;
-	t_argument				*argument;
+	char					*hash_type;
+	char					*input;
+	char					*output;
+	size_t					input_size;
+	int						error;
+	unsigned char			is_executed		:1;
+	unsigned char			option_r		:1;
+	unsigned char			option_q		:1;
+	unsigned char			option_p		:1;
+	unsigned char			empty			:4;
 }							t_ssl;
 
 #endif

@@ -6,39 +6,22 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 16:30:12 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/18 14:29:49 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/27 17:06:22 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ssl.h"
 
-static void		free_arguments(t_ssl *ssl)
-{
-	t_argument	*tmp;
-
-	tmp = NULL;
-	if (!ssl->argument)
-		return ;
-	ssl->argument = ssl->argument->head;
-	while (ssl->argument)
-	{
-		tmp = ssl->argument->next;
-		ft_strdel(&ssl->argument->hashed_argument);
-		ft_strdel(&ssl->argument->file_content);
-		ft_strdel(&ssl->argument->argument);
-		free(ssl->argument);
-		ssl->argument = tmp;
-	}
-	ssl->argument = NULL;
-}
-
 void			free_ssl(t_ssl *ssl)
 {
 	if (!ssl)
 		return ;
-	ft_strdel(&ssl->hash);
-	if (ssl->options)
-		free(ssl->options);
+	if (ssl->hash_type)
+		ft_strdel(&ssl->hash_type);
+	if (ssl->input)
+		ft_strdel(&ssl->input);
+	if (ssl->output)
+		ft_strdel(&ssl->output);
 	free_arguments(ssl);
 	free(ssl);
 }

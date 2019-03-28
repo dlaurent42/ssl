@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:04:29 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/18 15:11:36 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/27 11:32:49 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@ int		main(int ac, char **av)
 
 	(void)ac;
 	ssl = declare_empty_ssl_structure();
-	parse_arguments(&ssl, av);
-	dispatcher(&ssl);
-	status = display(ssl);
+	execute_hash(&ssl, av);
+	status = ssl->is_error;
 	free_ssl(ssl);
 	return (status);
 }
