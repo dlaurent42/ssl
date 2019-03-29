@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:01:48 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/29 00:22:51 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/29 01:30:40 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,20 @@
 # define OPT_NOT_POSSIBLE			0
 # define OPT_POSSIBLE				1
 # define LAST_OPT_IS_S				2
+
+/*
+** hash summary
+*/
+# define MAX_HASHES					5
+
+static t_dispatcher	g_dispatcher[6] = {
+	{"md5", "MD5", convert_md5},
+	{"sha224", "SHA224", convert_sha224},
+	{"sha256", "SHA256", convert_sha256},
+	{"sha384", "SHA384", convert_sha384},
+	{"sha512", "SHA512", convert_sha512},
+	{NULL, NULL, NULL}
+};
 
 /*
 ** global variables
@@ -94,7 +108,7 @@ static uint32_t	g_sha256_k[64] = {
 	0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2
 };
 
-static uint64_t	g_sha512_k[80] = {
+static uint64_t	g_sha384_k[80] = {
 	0x428a2f98d728ae22, 0x7137449123ef65cd, 0xb5c0fbcfec4d3b2f,
 	0xe9b5dba58189dbbc, 0x3956c25bf348b538, 0x59f111f1b605d019,
 	0x923f82a4af194f9b, 0xab1c5ed5da6d8118, 0xd807aa98a3030242,
@@ -124,7 +138,7 @@ static uint64_t	g_sha512_k[80] = {
 	0x5fcb6fab3ad6faec, 0x6c44198c4a475817
 };
 
-static uint64_t	g_sha384_k[80] = {
+static uint64_t	g_sha512_k[80] = {
 	0x428a2f98d728ae22, 0x7137449123ef65cd, 0xb5c0fbcfec4d3b2f,
 	0xe9b5dba58189dbbc, 0x3956c25bf348b538, 0x59f111f1b605d019,
 	0x923f82a4af194f9b, 0xab1c5ed5da6d8118, 0xd807aa98a3030242,

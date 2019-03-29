@@ -6,26 +6,11 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 17:30:48 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/29 00:25:14 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/29 01:36:44 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ssl.h"
-
-static char	*get_hash(char *hash)
-{
-	if (ft_strcmps(hash, "md5") == 0)
-		return ("MD5");
-	if (ft_strcmps(hash, "sha224") == 0)
-		return ("SHA224");
-	if (ft_strcmps(hash, "sha256") == 0)
-		return ("SHA256");
-	if (ft_strcmps(hash, "sha384") == 0)
-		return ("SHA384");
-	if (ft_strcmps(hash, "sha512") == 0)
-		return ("SHA512");
-	return ("UNKNOWN");
-}
 
 static void	print_error_argument(int error, char *hash_type, char *filename)
 {
@@ -69,13 +54,13 @@ static void	print_other_valid_argument(t_ssl **ssl, char *filename)
 	}
 	else if ((*ssl)->from_file)
 	{
-		ft_printf("%s (", get_hash((*ssl)->hash_type));
+		ft_printf("%s (", g_dispatcher[(*ssl)->hash_index].full_name);
 		write(1, filename, ft_strlens(filename));
 		ft_printf(") = %s\n", (*ssl)->output);
 	}
 	else
 	{
-		ft_printf("%s (\"", get_hash((*ssl)->hash_type));
+		ft_printf("%s (\"", g_dispatcher[(*ssl)->hash_index].full_name);
 		write(1, (*ssl)->input, (*ssl)->input_size);
 		ft_printf("\") = %s\n", (*ssl)->output);
 	}
@@ -86,7 +71,8 @@ void		display(t_ssl **ssl, char *filename)
 	if ((*ssl)->from_stdin)
 		print_stdin_argument(ssl);
 	else if ((*ssl)->from_file && (*ssl)->error)
-		print_error_argument((*ssl)->error, (*ssl)->hash_type, filename);
+		print_error_argument((*ssl)->error,
+			g_dispatcher[(*ssl)->hash_index].full_name, filename);
 	else if ((*ssl)->option_q)
 		ft_putendl((*ssl)->output);
 	else

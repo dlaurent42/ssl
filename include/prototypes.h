@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:01:49 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/29 00:22:41 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/29 01:26:07 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void				read_from_stdin(t_ssl **ssl);
 /*
 **	ERRORS:		handle every single fatal error in the program
 */
-void				err_handler(unsigned char errcode, t_ssl *ssl);
+void				err_handler(unsigned char errcode, t_ssl *ssl, char *hash);
 
 /*
 **	MEMORY:		cares about memory allocation and free of program's structures

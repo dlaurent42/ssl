@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 15:01:50 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/29 00:22:01 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/29 01:42:10 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,14 +98,20 @@ typedef struct				s_sha512
 	uint64_t				*w;
 }							t_sha512;
 
+typedef struct				s_dispatcher
+{
+	char					*name;
+	char					*full_name;
+	char					*(*dispatch)(char *input, size_t size);
+}							t_dispatcher;
 
 typedef struct				s_ssl
 {
-	char					*hash_type;
 	char					*input;
 	char					*output;
 	size_t					input_size;
 	int						error;
+	unsigned char			hash_index;
 	unsigned char			is_executed		:1;
 	unsigned char			return_status	:1;
 	unsigned char			option_r		:1;

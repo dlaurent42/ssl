@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 18:29:17 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/28 14:33:43 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/29 01:27:41 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static uint64_t	get_file_size(int fd)
 static void		read_err_handler(int fd, t_ssl *ssl)
 {
 	close(fd);
-	err_handler(ERRCODE_MALLOC_FAILED, ssl);
+	err_handler(ERRCODE_MALLOC_FAILED, ssl, NULL);
 }
 
 void			read_from_file(t_ssl **ssl, char *filename)
@@ -64,5 +64,5 @@ void			read_from_file(t_ssl **ssl, char *filename)
 		ft_strdel(&buffer);
 	if (!(*ssl)->error && !(*ssl)->input)
 		if (!((*ssl)->input = ft_strdups("")))
-			err_handler(ERRCODE_MALLOC_FAILED, *ssl);
+			err_handler(ERRCODE_MALLOC_FAILED, *ssl, NULL);
 }
