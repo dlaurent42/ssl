@@ -464,10 +464,10 @@
 	if ! grep -q "53d53ea94217b259c11a5a2d104ec58a file" "logs/trace_$TEST_NAME"; then
 		echo ".......... Unexpected output"
 	fi
-	if ! grep -q "ft_ssl: md5: -s: No such file or directory." "logs/trace_$TEST_NAME"; then
+	if ! grep -q "ft_ssl: MD5: -s: No such file or directory." "logs/trace_$TEST_NAME"; then
 		echo ".......... Unexpected output"
 	fi
-	if ! grep -q "ft_ssl: md5: bar: No such file or directory." "logs/trace_$TEST_NAME"; then
+	if ! grep -q "ft_ssl: MD5: bar: No such file or directory." "logs/trace_$TEST_NAME"; then
 		echo ".......... Unexpected output"
 	fi
 

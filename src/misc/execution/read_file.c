@@ -6,7 +6,7 @@
 /*   By: dlaurent <dlaurent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 18:29:17 by dlaurent          #+#    #+#             */
-/*   Updated: 2019/03/29 01:27:41 by dlaurent         ###   ########.fr       */
+/*   Updated: 2019/03/29 13:58:24 by dlaurent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ void			read_from_file(t_ssl **ssl, char *filename)
 		(*ssl)->input_size += read_return;
 		ft_bzero(buffer, buff_size);
 	}
-	close(fd);
+	if (fd > 2)
+		close(fd);
 	if (buffer)
 		ft_strdel(&buffer);
 	if (!(*ssl)->error && !(*ssl)->input)

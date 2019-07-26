@@ -308,7 +308,7 @@
 	fi
 
 	# Check ouput
-	if ! grep -q "ft_ssl: md5: resources/testing_everything: No such file or directory." "logs/trace_$TEST_NAME"; then
+	if ! grep -q "ft_ssl: MD5: resources/testing_everything: No such file or directory." "logs/trace_$TEST_NAME"; then
 		echo ".......... Unexpected output"
 	fi
 
@@ -347,7 +347,7 @@
 	fi
 
 	# Check ouput
-	if ! grep -q "ft_ssl: md5: resources/permissions: Permission denied." "logs/trace_$TEST_NAME"; then
+	if ! grep -q "ft_ssl: MD5: resources/permissions: Permission denied." "logs/trace_$TEST_NAME"; then
 		echo ".......... Unexpected output"
 	fi
 
@@ -386,7 +386,7 @@
 	fi
 
 	# Check ouput
-	if ! grep -q "ft_ssl: md5: resources/folder: Is a directory." "logs/trace_$TEST_NAME"; then
+	if ! grep -q "ft_ssl: MD5: resources/folder: Is a directory." "logs/trace_$TEST_NAME"; then
 		echo ".......... Unexpected output"
 	fi
 
@@ -425,6 +425,6 @@
 	fi
 
 	# Check ouput
-	if ! grep -q "ft_ssl: md5: option requires an argument -- s" "logs/trace_$TEST_NAME"; then
+	if ! grep -q "ft_ssl: MD5: option requires an argument -- s" "logs/trace_$TEST_NAME"; then
 		echo ".......... Unexpected output"
 	fi
